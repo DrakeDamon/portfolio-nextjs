@@ -1,4 +1,4 @@
-import { allCaseStudies } from 'content-collections'
+import { allCaseStudies } from '@/data/case-studies'
 import { CaseStudyLayout } from '@/components/case-study-layout'
 import { notFound } from 'next/navigation'
 

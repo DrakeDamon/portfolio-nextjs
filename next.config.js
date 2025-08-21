@@ -1,5 +1,3 @@
-const { withContentCollections } = require('content-collections')
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
@@ -9,4 +7,4 @@ const nextConfig = {
   },
 }
 
-module.exports = withContentCollections(nextConfig)
+module.exports = nextConfig
