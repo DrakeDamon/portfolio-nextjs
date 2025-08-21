@@ -1,0 +1,125 @@
+---
+title: "SEC EDGAR Financials Warehouse"
+slug: "sec-edgar-warehouse"
+summary: "Production-style lakehouse architecture processing SEC financial data with BigQuery, dbt, and automated data quality validation."
+role: "Data Engineer"
+dates: "2024"
+stack: ["GCP", "BigQuery", "dbt", "Great Expectations", "GitHub Actions", "Looker Studio", "Python"]
+metrics:
+  - label: "dbt Tests Passed"
+    value: "14/14"
+    description: "100% data quality validation"
+  - label: "GE Validations"
+    value: "100%"
+    description: "All data quality checks passing"
+  - label: "Query Cost Reduction"
+    value: "80-90%"
+    description: "Via partition/cluster optimization"
+  - label: "Automation"
+    value: "Daily 06:00 UTC"
+    description: "Automated refresh schedule"
+links:
+  repo: "https://github.com/DrakeDamon/sec-edgar-warehouse"
+  dashboard: "https://lookerstudio.google.com/sec-edgar-dashboard"
+published: true
+---
+
+## Problem
+
+Financial data analysis requires reliable, up-to-date SEC filing information that's expensive to query and difficult to maintain. Analysts need a fast, cost-effective way to access standardized financial metrics across thousands of companies with guaranteed data quality.
+
+## Constraints
+
+- SEC API rate limits requiring careful throttling
+- Raw filing data inconsistencies and format variations
+- BigQuery costs scaling with data volume scanned
+- Need for daily automated updates with zero manual intervention
+- Data quality requirements for financial accuracy
+
+## Architecture
+
+Built a production-style lakehouse following the medallion architecture pattern:
+
+```
+SEC API → GCS (Raw NDJSON) → BigQuery Raw → dbt Transform → BigQuery Curated → Looker Studio
+```
+
+### Data Flow
+1. **Extract**: Rate-limited SEC API calls → GCS storage (NDJSON format)
+2. **Load**: Batch loads to BigQuery raw tables with schema validation
+3. **Transform**: dbt models creating staging → intermediate → mart layers
+4. **Serve**: Curated tables optimized for BI consumption
+
+### Key Tables
+- `sec_raw` - Raw filing data with schema checks
+- `sec_curated_*` - Transformed and validated datasets
+- `fct_financials_quarterly` - Partitioned on `period_end_date`, clustered on `cik`
+- `dim_company` - Company dimension table
+- `kpi_company_latest` - Latest period revenue and margins
+- `kpi_ttm_revenue` - Rolling 4-quarter trailing twelve months
+
+## Pipeline Implementation
+
+### dbt Models
+- **Staging**: Clean and standardize raw SEC data
+- **Intermediate**: Business logic and calculations
+- **Marts**: Final consumption-ready tables with KPIs
+
+### Data Quality Gates
+- 14/14 dbt tests covering data integrity, relationships, and business rules
+- Great Expectations validations for row counts, non-nulls, and USD unit filters
+- Bash smoke check script for end-to-end validation
+- All results logged to BigQuery for monitoring
+
+### Automation
+- GitHub Actions workflow with service account authentication
+- Daily refresh at 06:00 UTC for consistent data freshness
+- Reproducible builds with dependency management
+- Error handling and notification system
+
+## Results & Impact
+
+### Performance Optimization
+- **Query Cost Reduction**: 80-90% reduction in scanned bytes through partition pruning and `cik` clustering
+- **Query Speed**: TTM trend queries execute in seconds vs. minutes
+- **Looker Studio**: Dashboard stays responsive with optimized data model
+
+### Data Quality
+- **100% Validation Success**: All dbt tests and Great Expectations checks passing
+- **Zero Data Issues**: Automated quality gates prevent bad data propagation  
+- **Audit Trail**: Complete lineage and validation history in BigQuery
+
+### Business Value
+- **Automated Insights**: Daily KPI updates without manual intervention
+- **Cost Efficiency**: Optimized BigQuery usage reducing monthly costs
+- **Scalability**: Architecture handles thousands of companies and quarters
+
+## Cost & Performance
+
+### BigQuery Optimization
+- Partitioning on `period_end_date` for time-based queries
+- Clustering on `cik` (company identifier) for entity-based filtering
+- Materialized views for frequently accessed KPIs
+- Query result caching for repeated analyses
+
+### Infrastructure Costs
+- Minimal compute costs with serverless GitHub Actions
+- BigQuery storage costs optimized through partitioning
+- GCS storage for raw data backup and lineage
+
+## What I'd Improve Next
+
+### Enhanced Monitoring
+- Add dbt Cloud or Airflow for more sophisticated orchestration
+- Implement data freshness monitoring and alerting
+- Create data lineage visualization dashboard
+
+### Advanced Analytics
+- Real-time streaming for urgent filing updates
+- Machine learning models for financial trend prediction
+- Advanced financial ratio calculations and industry benchmarking
+
+### Scale & Reliability
+- Multi-region deployment for disaster recovery
+- More granular data quality rules and anomaly detection
+- Integration with external financial data providers for enrichment

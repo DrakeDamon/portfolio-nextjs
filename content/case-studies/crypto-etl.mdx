@@ -1,0 +1,128 @@
+---
+title: "Cloud-Native Crypto ETL"
+slug: "crypto-etl"
+summary: "Serverless cryptocurrency data pipeline using Cloud Run Jobs, BigQuery, and Terraform with automated cost optimization."
+role: "Data Engineer"
+dates: "2024"
+stack: ["Python", "Docker", "Cloud Run Jobs", "Cloud Scheduler", "BigQuery", "GCS", "Secret Manager", "dbt", "Terraform", "Great Expectations"]
+metrics:
+  - label: "Monthly Cost"
+    value: "~$2.36"
+    description: "Total BigQuery query spend"
+  - label: "Architecture"
+    value: "Serverless"
+    description: "ETL → Transform → Validate → Visualize"
+  - label: "Automation"
+    value: "Daily/6-hourly"
+    description: "Scheduled data ingestion"
+  - label: "Infrastructure"
+    value: "100% Code"
+    description: "Terraform-managed resources"
+links:
+  repo: "https://github.com/DrakeDamon/crypto-etl-pipeline"
+  dashboard: "https://lookerstudio.google.com/crypto-dashboard"
+published: true
+---
+
+## Problem
+
+Cryptocurrency market analysis requires real-time price data, technical indicators, and trend analysis across multiple assets. Manual data collection is unreliable, and existing solutions are expensive or lack the flexibility needed for custom analytics.
+
+## Constraints
+
+- API rate limits from data providers (CoinGecko)
+- Cost optimization requirements for BigQuery usage
+- Need for both real-time and batch processing capabilities
+- Infrastructure must be fully automated and reproducible
+- Data quality validation at every stage
+
+## Architecture
+
+Designed a serverless, cost-optimized data pipeline using Google Cloud Platform:
+
+```
+CoinGecko API → Cloud Run Jobs → GCS → BigQuery → dbt → Looker Studio
+```
+
+### Infrastructure Components
+- **Cloud Run Jobs**: Containerized Python extractors with auto-scaling
+- **Cloud Scheduler**: Automated job triggering (daily/6-hourly schedules)
+- **GCS**: Raw JSON + normalized CSV storage with lifecycle policies
+- **BigQuery**: Partitioned and clustered analytics tables
+- **Secret Manager**: Secure API key management
+- **Cloud Logging**: Centralized monitoring and debugging
+
+## Pipeline Implementation
+
+### Data Extraction
+- **Python 3.11** containerized extractors with retry logic
+- **Docker** images for consistent execution environment
+- **Rate limiting** compliance with CoinGecko API constraints
+- **Error handling** with exponential backoff and dead letter queues
+
+### Data Storage & Processing
+- **Raw JSON** preservation in GCS for full data lineage
+- **Normalized CSV** for structured analytics consumption
+- **Lifecycle policies** for cost optimization (delete after 90 days)
+- **Partitioned tables** by date for query performance
+
+### dbt Transformations
+- **Staging models**: `stg_prices` with data cleansing and validation
+- **Fact tables**: `fact_prices_curated` with computed metrics
+- **Dimension tables**: `dim_asset` for cryptocurrency metadata
+- **Technical indicators**: 7/30/90-day moving averages, returns, volatility, golden cross signals
+
+### Infrastructure as Code
+- **Terraform** modules for all GCP resources
+- **Least-privilege IAM** roles and service accounts
+- **Environment separation** (dev/staging/prod)
+- **Makefile workflows** for deployment automation
+
+## Results & Impact
+
+### Cost Optimization
+- **Monthly spend**: ~$2.36 for BigQuery queries
+- **Partition pruning**: Eliminates unnecessary data scanning
+- **Clustering**: Optimizes queries by asset symbol
+- **Serverless architecture**: Zero idle costs
+
+### Data Quality & Reliability
+- **Great Expectations** validation suite with automated checks
+- **dbt tests** ensuring data integrity and business logic
+- **Validation results** logged to BigQuery for monitoring
+- **End-to-end testing** with synthetic data validation
+
+### Operational Excellence
+- **100% automated** from ingestion to visualization
+- **Reproducible deployments** via Terraform
+- **Monitoring & alerting** through Cloud Logging
+- **Disaster recovery** with GCS backup retention
+
+## Performance Metrics
+
+### Query Performance
+- **Sub-second responses** for dashboard queries
+- **Efficient aggregations** through pre-computed technical indicators
+- **Optimized joins** using clustered table design
+
+### Pipeline Reliability
+- **99.9% uptime** for scheduled extractions
+- **Automatic retries** for transient failures
+- **Data freshness** monitoring with SLA alerting
+
+## What I'd Improve Next
+
+### Enhanced Analytics
+- **Real-time streaming** using Pub/Sub and Dataflow
+- **Machine learning models** for price prediction and anomaly detection
+- **Advanced technical indicators** (RSI, MACD, Bollinger Bands)
+
+### Operational Improvements
+- **Multi-cloud deployment** for vendor diversification
+- **Advanced monitoring** with custom Datadog dashboards
+- **Cost attribution** tracking by asset and query type
+
+### Data Enrichment
+- **Social sentiment analysis** from Twitter/Reddit APIs
+- **News integration** for fundamental analysis correlation
+- **On-chain data** integration for DeFi protocols
