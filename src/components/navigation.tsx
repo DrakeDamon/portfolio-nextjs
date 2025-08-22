@@ -28,13 +28,13 @@ export function Navigation() {
           {navigation.map((item) => (
             <Button
               key={item.href}
-              variant={pathname === item.href ? "default" : "ghost"}
-              size="sm"
-              asChild
+              href={item.href}
+              className={pathname === item.href 
+                ? "bg-emerald-500 text-neutral-900 hover:bg-emerald-400" 
+                : "bg-transparent text-neutral-300 hover:bg-neutral-800"
+              }
             >
-              <Link href={item.href}>
-                {item.name}
-              </Link>
+              {item.name}
             </Button>
           ))}
         </nav>
