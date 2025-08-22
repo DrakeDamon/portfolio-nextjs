@@ -2,7 +2,6 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { ThemeToggle } from "./theme-toggle"
 import Button from "./ui/button"
 
 const navigation = [
@@ -43,7 +42,6 @@ export function Navigation() {
           <Button href="https://github.com/DrakeDamon" className="bg-neutral-800 text-neutral-300 hover:bg-neutral-700 text-sm px-3 py-1">
             GitHub
           </Button>
-          <ThemeToggle />
         </div>
       </div>
     </header>

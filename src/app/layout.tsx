@@ -1,6 +1,5 @@
 import './globals.css';
 import { PropsWithChildren } from 'react';
-import { ThemeProvider } from 'next-themes';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/footer';
 
@@ -37,14 +36,12 @@ export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="bg-neutral-950 text-neutral-100 antialiased">
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
-          <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-neutral-800 px-3 py-2 rounded">
-            Skip to main content
-          </a>
-          <Navbar />
-          <main id="main" className="container mx-auto px-4 md:px-6">{children}</main>
-          <Footer />
-        </ThemeProvider>
+        <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-neutral-800 px-3 py-2 rounded">
+          Skip to main content
+        </a>
+        <Navbar />
+        <main id="main" className="container mx-auto px-4 md:px-6">{children}</main>
+        <Footer />
         <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(personLd)}} />
       </body>
     </html>
