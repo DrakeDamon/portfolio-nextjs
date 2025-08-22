@@ -2,6 +2,7 @@ import { allCaseStudies } from '@/data/case-studies'
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
+import { ArrowRight, ExternalLink, Github } from "lucide-react"
 import Link from 'next/link'
 
 export default function ProjectsPage() {
@@ -66,20 +67,23 @@ export default function ProjectsPage() {
               {/* Actions */}
               <div className="flex flex-wrap gap-4 pt-4">
                 <Button size="lg" asChild>
-                  <Link href={`/projects/${study.slug}`}>
-                    Read Case Study →
+                  <Link href={`/projects/${study.slug}`} className="flex items-center gap-2">
+                    Read Case Study
+                    <ArrowRight className="h-4 w-4" />
                   </Link>
                 </Button>
                 {study.links?.repo && (
                   <Button variant="outline" size="lg" asChild>
-                    <a href={study.links.repo} target="_blank" rel="noopener noreferrer">
+                    <a href={study.links.repo} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                      <Github className="h-4 w-4" />
                       View Code
                     </a>
                   </Button>
                 )}
                 {study.links?.demo && (
                   <Button variant="outline" size="lg" asChild>
-                    <a href={study.links.demo} target="_blank" rel="noopener noreferrer">
+                    <a href={study.links.demo} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                      <ExternalLink className="h-4 w-4" />
                       Live Demo
                     </a>
                   </Button>
