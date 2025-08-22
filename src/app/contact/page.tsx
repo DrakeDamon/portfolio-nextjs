@@ -7,7 +7,7 @@ export default function ContactPage() {
       <div className="text-center mb-16">
         <h1 className="text-5xl font-bold mb-6 text-emerald-400">Get In Touch</h1>
         <p className="text-xl text-neutral-300 max-w-3xl mx-auto">
-          Let's discuss data engineering opportunities, collaboration on projects, or just connect!
+          Let&apos;s discuss data engineering opportunities, collaboration on projects, or just connect!
         </p>
       </div>
       
@@ -71,7 +71,7 @@ export default function ContactPage() {
             </div>
             
             <div>
-              <h3 className="text-lg font-semibold mb-2 text-emerald-400">💡 Learning & Growth</h3>
+              <h3 className="text-lg font-semibold mb-2 text-emerald-400">💡 Learning &amp; Growth</h3>
               <p className="text-neutral-300">Always interested in discussing new technologies, data architecture patterns, and industry best practices.</p>
             </div>
           </div>
