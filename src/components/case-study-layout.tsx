@@ -87,7 +87,7 @@ export function CaseStudyLayout({
           <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">Technology Stack</h3>
           <div className="flex flex-wrap gap-2">
             {stack.map((tech) => (
-              <Badge key={tech} variant="primary">
+              <Badge key={tech} variant="default">
                 {tech}
               </Badge>
             ))}
