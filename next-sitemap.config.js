@@ -1,15 +1,5 @@
-/** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: 'https://daviddamon.dev',
+  siteUrl: 'https://drakedamon.github.io/portfolio-nextjs',
   generateRobotsTxt: true,
-  generateIndexSitemap: false,
-  exclude: ['/api/*'],
-  robotsTxtOptions: {
-    policies: [
-      {
-        userAgent: '*',
-        allow: '/',
-      },
-    ],
-  },
-}
+  outDir: 'out',
+};

@@ -1,91 +1,52 @@
-import type { Metadata } from 'next'
-import './globals.css'
-import { ThemeProvider } from '@/components/theme-provider'
-import { Navigation } from '@/components/navigation'
-import { Footer } from '@/components/footer'
+import './globals.css';
+import { PropsWithChildren } from 'react';
+import { ThemeProvider } from 'next-themes';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
-export const metadata: Metadata = {
-  title: 'David Damon | Data Engineer — GCP · Databricks · BigQuery · dbt · MLflow · Terraform',
-  description: 'Cloud-first, AI-accelerated data engineer who builds production ETL/ELT on GCP & Databricks, tracks models with MLflow, and ships results to UIs and APIs—optimized for reliability, observability, and cost.',
-  keywords: 'Data Engineer, GCP, Google Cloud Platform, Databricks, BigQuery, dbt, MLflow, Terraform, Python, SQL, ETL, ELT, Machine Learning, Data Warehouse',
-  authors: [{ name: 'David Damon' }],
+export const metadata = {
+  title: "David (Drake) Damon — Data Engineer",
+  description: "Cloud-first, AI-accelerated data engineer (GCP, Databricks, BigQuery, dbt).",
+  metadataBase: new URL('https://drakedamon.github.io/portfolio-nextjs'),
   openGraph: {
-    title: 'David Damon | Data Engineer',
-    description: 'Cloud-first data engineer specializing in GCP, Databricks, and production ML pipelines.',
-    url: 'https://daviddamon.dev',
-    siteName: 'David Damon Portfolio',
-    type: 'website',
+    title: "David (Drake) Damon — Data Engineer",
+    description: "Production ETL/ELT, dbt, MLflow. Clean case studies & metrics.",
+    url: "https://drakedamon.github.io/portfolio-nextjs",
+    siteName: "David Damon Portfolio",
+    images: [],
+    type: "website"
   },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'David Damon | Data Engineer',
-    description: 'Cloud-first data engineer specializing in GCP, Databricks, and production ML pipelines.',
-  },
-}
+  twitter: { card: 'summary_large_image' }
+};
 
-const personLd = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "David Damon",
-  "alternateName": "Drake Damon",
-  "jobTitle": "Data Engineer",
-  "email": "mailto:dddamon06@gmail.com",
-  "telephone": "+1-316-609-8566",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Tampa",
-    "addressRegion": "FL",
-    "addressCountry": "US"
-  },
-  "sameAs": [
-    "https://www.linkedin.com/in/drakedamon",
-    "https://github.com/DrakeDamon"
-  ],
-  "knowsAbout": ["Data Engineering", "GCP", "Databricks", "BigQuery", "dbt", "MLflow", "Terraform", "Python", "SQL"],
-  "alumniOf": [
-    {
-      "@type": "EducationalOrganization",
-      "name": "Friends University"
-    },
-    {
-      "@type": "EducationalOrganization", 
-      "name": "Flatiron School"
-    }
-  ]
-}
+export default function RootLayout({ children }: PropsWithChildren) {
+  const personLd = {
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"David Damon",
+    "jobTitle":"Data Engineer",
+    "email":"mailto:dddamon06@gmail.com",
+    "telephone":"+1-316-609-8566",
+    "address":{"@type":"PostalAddress","addressLocality":"Tampa","addressRegion":"FL","addressCountry":"US"},
+    "sameAs":[
+      "https://www.linkedin.com/in/drakedamon",
+      "https://github.com/DrakeDamon"
+    ]
+  };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personLd) }}
-        />
-      </head>
-      <body className="bg-background text-foreground antialiased">
-        <a href="#main-content" className="skip-link">
-          Skip to main content
-        </a>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <div className="min-h-screen flex flex-col">
-            <Navigation />
-            <main id="main-content" className="flex-1">
-              {children}
-            </main>
-            <Footer />
-          </div>
+      <body className="bg-neutral-950 text-neutral-100 antialiased">
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+          <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-neutral-800 px-3 py-2 rounded">
+            Skip to main content
+          </a>
+          <Navbar />
+          <main id="main" className="container mx-auto px-4 md:px-6">{children}</main>
+          <Footer />
         </ThemeProvider>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(personLd)}} />
       </body>
     </html>
-  )
+  );
 }
