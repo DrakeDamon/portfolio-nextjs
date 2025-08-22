@@ -74,7 +74,7 @@ export default function SkillsPage() {
           <CardContent>
             <div className="flex flex-wrap gap-2">
               {certifications.map((cert) => (
-                <Badge key={cert} variant="primary">
+                <Badge key={cert} variant="default">
                   {cert}
                 </Badge>
               ))}
