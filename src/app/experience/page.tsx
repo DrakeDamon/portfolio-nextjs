@@ -1,84 +1,145 @@
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
+import Card from '@/components/ui/Card'
+import Chip from '@/components/ui/Chip'
+import Badge from '@/components/ui/Badge'
 
 const experiences = [
   {
     title: "React Engineer (Contract)",
     company: "DevSoft",
-    period: "Jun 2022 – Present",
-    description: "Built and maintained React apps for 1,000+ users; perf work (code-splitting, lazy-loading) cut median load time ~40%."
+    location: "Tampa, FL",
+    dates: "Jun 2022 – Present",
+    description: "Built and maintained React apps for 1,000+ users with performance optimizations and REST integrations.",
+    achievements: [
+      "Implemented code-splitting and lazy-loading optimizations",
+      "Reduced median load time by approximately 40%",
+      "Built responsive React applications serving 1,000+ active users",
+      "Integrated REST APIs for seamless data flow and user experience"
+    ],
+    technologies: ["React", "JavaScript", "REST APIs", "Performance Optimization", "Code Splitting"]
   },
   {
-    title: "Biology Teacher", 
+    title: "Biology Teacher",
     company: "Freedom High School (HCPS)",
-    period: "Aug 2023 – Present",
-    description: "Analyzed performance data for 150+ students; viz/stat summaries informed instruction with an 8-member team."
+    location: "Tampa, FL",
+    dates: "Aug 2023 – Present",
+    description: "Analyzed performance data for 150+ students using visualization and statistical summaries to guide instruction.",
+    achievements: [
+      "Analyzed academic performance data for 150+ students",
+      "Created visualization and statistical summaries for data-driven instruction",
+      "Collaborated with 8-member teaching team on curriculum development",
+      "Applied data analysis skills to educational outcomes and student success metrics"
+    ],
+    technologies: ["Data Analysis", "Statistical Analysis", "Data Visualization", "Educational Technology"]
   },
   {
     title: "CDL Driver",
-    company: "FedEx Freight", 
-    period: "2021 – 2023",
-    description: "99.9% on-time delivery with rigorous documentation."
+    company: "FedEx Freight",
+    location: "Tampa, FL",
+    dates: "2021 – 2023",
+    description: "Maintained excellent delivery performance with rigorous documentation and operational excellence.",
+    achievements: [
+      "Achieved 99.9% on-time delivery rate",
+      "Maintained rigorous documentation standards",
+      "Ensured safe and efficient freight transportation",
+      "Demonstrated reliability and attention to detail in logistics operations"
+    ],
+    technologies: ["Logistics Management", "Documentation Systems", "Quality Control", "Operations"]
   }
-]
+];
+
+const certifications = [
+  "AWS Certified Cloud Practitioner",
+  "Databricks Certified Data Engineer Associate"
+];
+
+const education = [
+  {
+    degree: "Full-Stack Web Development",
+    school: "Flatiron School",
+    year: "2025",
+    details: "Python/Flask & JavaScript - Tampa, FL"
+  },
+  {
+    degree: "Bachelor of Science in Biology",
+    school: "Friends University",
+    year: "2021",
+    details: "Wichita, KS"
+  }
+];
 
 export default function ExperiencePage() {
   return (
-    <div className="container mx-auto max-w-4xl px-6 py-16">
+    <div className="container mx-auto px-4 md:px-6 py-12">
       <div className="text-center mb-16">
-        <h1 className="text-5xl font-bold mb-6">Experience</h1>
-        <p className="text-xl text-muted-foreground">Professional journey in data engineering and education</p>
+        <h1 className="text-5xl font-bold mb-6 text-emerald-400">Professional Experience</h1>
+        <p className="text-xl text-neutral-300 max-w-3xl mx-auto">
+          Building scalable data solutions and driving business impact through data-driven insights.
+        </p>
       </div>
       
-      <div className="space-y-8">
-        {experiences.map((exp, index) => (
-          <Card key={index} className="relative pl-8 border-l-4 border-primary">
-            <CardHeader>
-              <CardTitle className="text-2xl">{exp.title}</CardTitle>
-              <div className="flex items-center gap-4 text-muted-foreground">
-                <span className="font-medium">{exp.company}</span>
-                <span>•</span>
-                <span>{exp.period}</span>
+      <div className="space-y-12 mb-16">
+        {experiences.map((experience, index) => (
+          <Card key={index}>
+            <div className="mb-6">
+              <h2 className="text-3xl font-bold mb-2 text-emerald-400">{experience.title}</h2>
+              <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4 text-lg text-neutral-300">
+                <span className="font-semibold">{experience.company}</span>
+                <span className="hidden md:block">•</span>
+                <span>{experience.location}</span>
+                <span className="hidden md:block">•</span>
+                <span className="text-neutral-400">{experience.dates}</span>
               </div>
-            </CardHeader>
-            <CardContent>
-              <p className="text-lg leading-relaxed">{exp.description}</p>
-            </CardContent>
+            </div>
+            
+            <p className="text-lg text-neutral-300 leading-relaxed mb-6">{experience.description}</p>
+            
+            <div className="mb-6">
+              <h3 className="text-xl font-semibold mb-4 text-emerald-400">Key Achievements</h3>
+              <ul className="space-y-2">
+                {experience.achievements.map((achievement, idx) => (
+                  <li key={idx} className="flex items-start gap-3 text-neutral-300">
+                    <span className="text-emerald-400 mt-1">•</span>
+                    <span>{achievement}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            
+            <div>
+              <h3 className="text-xl font-semibold mb-4 text-emerald-400">Technologies Used</h3>
+              <div className="flex flex-wrap gap-3">
+                {experience.technologies.map((tech) => (
+                  <Chip key={tech}>{tech}</Chip>
+                ))}
+              </div>
+            </div>
           </Card>
         ))}
       </div>
       
-      <div className="mt-16 text-center">
-        <h2 className="text-3xl font-bold mb-8">Certifications</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <Card>
-            <CardContent className="p-6 text-center">
-              <h3 className="font-semibold text-lg">AWS Certified Cloud Practitioner</h3>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardContent className="p-6 text-center">
-              <h3 className="font-semibold text-lg">Databricks Certified Data Engineer Associate</h3>
-            </CardContent>
-          </Card>
-        </div>
-      </div>
-      
-      <div className="mt-16 text-center">
-        <h2 className="text-3xl font-bold mb-8">Education</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <Card>
-            <CardContent className="p-6 text-center">
-              <h3 className="font-semibold text-lg">Flatiron School (2025)</h3>
-              <p className="text-muted-foreground">Full-Stack Web Development (Python/Flask & JavaScript)</p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardContent className="p-6 text-center">
-              <h3 className="font-semibold text-lg">Friends University (2021)</h3>
-              <p className="text-muted-foreground">B.S., Biology</p>
-            </CardContent>
-          </Card>
-        </div>
+      <div className="grid md:grid-cols-2 gap-8">
+        <Card>
+          <h2 className="text-3xl font-bold mb-8 text-emerald-400">Certifications</h2>
+          <div className="space-y-4">
+            {certifications.map((cert) => (
+              <Badge key={cert} className="block w-full text-center py-3">{cert}</Badge>
+            ))}
+          </div>
+        </Card>
+        
+        <Card>
+          <h2 className="text-3xl font-bold mb-8 text-emerald-400">Education</h2>
+          <div className="space-y-6">
+            {education.map((edu, index) => (
+              <div key={index} className="border-b border-neutral-800 pb-4 last:border-b-0">
+                <h3 className="text-xl font-semibold text-emerald-400">{edu.degree}</h3>
+                <p className="text-lg text-neutral-300">{edu.school}</p>
+                <p className="text-neutral-400">{edu.year}</p>
+                <p className="text-sm text-neutral-400 mt-2">{edu.details}</p>
+              </div>
+            ))}
+          </div>
+        </Card>
       </div>
     </div>
   )

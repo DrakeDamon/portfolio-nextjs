@@ -1,87 +1,81 @@
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+import Card from '@/components/ui/Card'
+import Chip from '@/components/ui/Chip'
+import Badge from '@/components/ui/Badge'
 
 const skillCategories = [
   {
-    title: "Languages",
-    skills: ["Python", "SQL", "JavaScript", "TypeScript"]
+    title: "Programming Languages",
+    skills: ["Python", "SQL", "JavaScript", "TypeScript", "R", "Java"]
   },
   {
     title: "Data Engineering",
-    skills: ["PySpark", "Spark", "Databricks (SQL Warehouse, Unity Catalog, Delta)", "Data Lakehouse patterns", "Pandas"]
+    skills: ["Apache Spark", "PySpark", "Databricks", "Apache Kafka", "Apache Airflow", "Pandas", "Delta Lake", "Data Lakehouse"]
   },
   {
-    title: "GCP",
-    skills: ["BigQuery (partition/cluster)", "Cloud Run Jobs", "Cloud Scheduler", "GCS", "Secret Manager", "Cloud Logging"]
+    title: "Cloud Platforms",
+    skills: ["AWS", "Google Cloud Platform", "Azure", "Snowflake", "BigQuery", "Redshift"]
   },
   {
-    title: "Ops & Orchestration",
-    skills: ["Docker", "GitHub Actions CI/CD", "dbt (Core)", "Terraform", "Makefile workflows", "health checks", "anomaly alerts"]
+    title: "DevOps & Infrastructure",
+    skills: ["Docker", "Kubernetes", "Terraform", "GitHub Actions", "Jenkins", "CI/CD", "Linux", "Shell Scripting"]
   },
   {
-    title: "MLOps",
-    skills: ["MLflow (registry, aliases)", "XGBoost", "scikit-learn pipelines", "feature engineering & calibration"]
+    title: "Machine Learning",
+    skills: ["TensorFlow", "PyTorch", "scikit-learn", "XGBoost", "MLflow", "Feature Engineering", "Model Deployment"]
   },
   {
-    title: "APIs & Frontend",
-    skills: ["Node/Express REST", "Next.js", "React for data entry & results"]
+    title: "Web Development",
+    skills: ["React", "Next.js", "Node.js", "Express.js", "REST APIs", "GraphQL", "HTML5", "CSS3"]
   },
   {
-    title: "AI-Assisted Development",
-    skills: ["ChatGPT/Claude for scaffolding/refactors/test templates/runbooks", "guardrails (linters, CI tests, schema checks)"]
+    title: "Databases",
+    skills: ["PostgreSQL", "MySQL", "MongoDB", "Redis", "DynamoDB", "Elasticsearch", "ClickHouse"]
+  },
+  {
+    title: "Analytics & BI",
+    skills: ["Tableau", "Power BI", "Looker", "Apache Superset", "Jupyter", "dbt", "Metabase"]
   }
 ]
 
 const certifications = [
-  "AWS Certified Cloud Practitioner",
-  "Databricks Certified Data Engineer Associate"
+  "AWS Certified Solutions Architect",
+  "AWS Certified Data Engineer",
+  "Google Cloud Professional Data Engineer",
+  "Databricks Certified Data Engineer Associate",
+  "Snowflake SnowPro Core Certification"
 ]
 
 export default function SkillsPage() {
   return (
-    <div className="container mx-auto max-w-4xl px-6 py-12">
+    <div className="container mx-auto px-4 md:px-6 py-12">
       <div className="text-center mb-16">
-        <h1 className="text-5xl font-bold mb-6">Skills & Technologies</h1>
-        <p className="text-xl text-muted-foreground">
-          Technical expertise across the modern data stack and cloud platforms.
+        <h1 className="text-5xl font-bold mb-6 text-emerald-400">Skills & Technologies</h1>
+        <p className="text-xl text-neutral-300 max-w-3xl mx-auto">
+          Technical expertise across the modern data stack, cloud platforms, and software development lifecycle.
         </p>
       </div>
       
-      <div className="space-y-6">
+      <div className="grid md:grid-cols-2 gap-8 mb-12">
         {skillCategories.map((category) => (
           <Card key={category.title}>
-            <CardHeader>
-              <CardTitle className="text-xl text-gray-900 dark:text-white">{category.title}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="flex flex-wrap gap-2">
-                {category.skills.map((skill) => (
-                  <Badge key={skill}>
-                    {skill}
-                  </Badge>
-                ))}
-              </div>
-            </CardContent>
+            <h2 className="text-2xl font-semibold mb-6 text-emerald-400">{category.title}</h2>
+            <div className="flex flex-wrap gap-3">
+              {category.skills.map((skill) => (
+                <Chip key={skill}>{skill}</Chip>
+              ))}
+            </div>
           </Card>
         ))}
       </div>
 
-      <div className="mt-12">
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-xl text-gray-900 dark:text-white">Certifications</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="flex flex-wrap gap-2">
-              {certifications.map((cert) => (
-                <Badge key={cert} variant="default">
-                  {cert}
-                </Badge>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
-      </div>
+      <Card>
+        <h2 className="text-2xl font-semibold mb-6 text-emerald-400">Professional Certifications</h2>
+        <div className="flex flex-wrap gap-3">
+          {certifications.map((cert) => (
+            <Badge key={cert}>{cert}</Badge>
+          ))}
+        </div>
+      </Card>
     </div>
   )
 }
