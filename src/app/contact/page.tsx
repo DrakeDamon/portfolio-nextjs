@@ -58,7 +58,7 @@ export default function ContactPage() {
         </Card>
         
         <Card>
-          <h2 className="text-2xl font-semibold mb-6 text-emerald-400">What I'm Looking For</h2>
+          <h2 className="text-2xl font-semibold mb-6 text-emerald-400">What I&apos;m Looking For</h2>
           <div className="space-y-6">
             <div>
               <h3 className="text-lg font-semibold mb-2 text-emerald-400">🚀 Data Engineering Roles</h3>
