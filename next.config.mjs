@@ -14,7 +14,6 @@ const base = {
   assetPrefix: isGH ? `/${repoName}/` : undefined,
   images: { unoptimized: true },
   pageExtensions: ['ts','tsx','mdx','md'],
-  experimental: { optimizeCss: true },
 };
 
 export default withMDX(base);
