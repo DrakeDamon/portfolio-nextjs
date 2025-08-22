@@ -3,23 +3,23 @@ import { Card } from "./ui/card"
 const metrics = [
   {
     value: "14/14",
-    label: "dbt Tests Passed",
-    description: "SEC EDGAR data quality"
+    label: "dbt Tests",
+    description: "100% Great Expectations validations"
   },
   {
     value: "80-90%",
     label: "Query Cost Reduction", 
-    description: "BigQuery optimization"
+    description: "Fewer scanned bytes via partition + clustering"
   },
   {
     value: "40%",
-    label: "Load Time Reduction",
-    description: "React app optimization"
+    label: "Page Load Reduction",
+    description: "Median improvement on React apps"
   },
   {
     value: "99.9%",
-    label: "On-Time Delivery",
-    description: "FedEx operations"
+    label: "On-Time Performance",
+    description: "Logistics delivery reliability"
   }
 ]
 

@@ -1,40 +1,51 @@
-import React from 'react'
+import * as React from "react"
 
 interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode
 }
 
-export function Card({ className = '', children, ...props }: CardProps) {
-  return (
+const Card = React.forwardRef<HTMLDivElement, CardProps>(
+  ({ className = '', children, ...props }, ref) => (
     <div
-      className={`bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm p-6 ${className}`}
+      ref={ref}
+      className={`rounded-2xl border bg-card text-card-foreground shadow-sm p-6 transition-all duration-300 hover:shadow-lg ${className}`}
       {...props}
     >
       {children}
     </div>
   )
-}
+)
+Card.displayName = "Card"
 
-export function CardHeader({ className = '', children, ...props }: CardProps) {
-  return (
-    <div className={`mb-4 ${className}`} {...props}>
+const CardHeader = React.forwardRef<HTMLDivElement, CardProps>(
+  ({ className = '', children, ...props }, ref) => (
+    <div ref={ref} className={`flex flex-col space-y-1.5 mb-4 ${className}`} {...props}>
       {children}
     </div>
   )
-}
+)
+CardHeader.displayName = "CardHeader"
 
-export function CardTitle({ className = '', children, ...props }: CardProps) {
-  return (
-    <h3 className={`text-xl font-semibold text-gray-900 dark:text-white ${className}`} {...props}>
+const CardTitle = React.forwardRef<HTMLHeadingElement, CardProps>(
+  ({ className = '', children, ...props }, ref) => (
+    <h3
+      ref={ref}
+      className={`font-semibold leading-none tracking-tight ${className}`}
+      {...props}
+    >
       {children}
     </h3>
   )
-}
+)
+CardTitle.displayName = "CardTitle"
 
-export function CardContent({ className = '', children, ...props }: CardProps) {
-  return (
-    <div className={`${className}`} {...props}>
+const CardContent = React.forwardRef<HTMLDivElement, CardProps>(
+  ({ className = '', children, ...props }, ref) => (
+    <div ref={ref} className={className} {...props}>
       {children}
     </div>
   )
-}
+)
+CardContent.displayName = "CardContent"
+
+export { Card, CardHeader, CardTitle, CardContent }
