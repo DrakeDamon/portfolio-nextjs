@@ -55,28 +55,14 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1.0 }}
           >
-            <Button size="lg" asChild>
-              <Link href="/projects">
-                View Projects →
-              </Link>
+            <Button href="/projects" className="text-lg px-8 py-3">
+              View Projects →
             </Button>
-            <Button variant="outline" size="lg" asChild>
-              <a 
-                href="https://www.linkedin.com/in/drakedamon/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                LinkedIn
-              </a>
+            <Button href="https://www.linkedin.com/in/drakedamon/" className="bg-neutral-800 text-neutral-300 hover:bg-neutral-700 text-lg px-8 py-3">
+              LinkedIn
             </Button>
-            <Button variant="outline" size="lg" asChild>
-              <a 
-                href="https://github.com/DrakeDamon"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                GitHub
-              </a>
+            <Button href="https://github.com/DrakeDamon" className="bg-neutral-800 text-neutral-300 hover:bg-neutral-700 text-lg px-8 py-3">
+              GitHub
             </Button>
           </motion.div>
           

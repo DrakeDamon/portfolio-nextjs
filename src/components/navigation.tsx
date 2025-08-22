@@ -40,14 +40,8 @@ export function Navigation() {
         </nav>
         
         <div className="flex items-center space-x-2">
-          <Button variant="ghost" size="sm" asChild>
-            <a
-              href="https://github.com/DrakeDamon"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              GitHub
-            </a>
+          <Button href="https://github.com/DrakeDamon" className="bg-neutral-800 text-neutral-300 hover:bg-neutral-700 text-sm px-3 py-1">
+            GitHub
           </Button>
           <ThemeToggle />
         </div>
