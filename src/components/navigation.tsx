@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { ThemeToggle } from "./theme-toggle"
-import { Button } from "./ui/button"
+import Button from "./ui/button"
 
 const navigation = [
   { name: "Home", href: "/" },
