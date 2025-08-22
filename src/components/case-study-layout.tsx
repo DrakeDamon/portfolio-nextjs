@@ -87,7 +87,7 @@ export function CaseStudyLayout({
           <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">Technology Stack</h3>
           <div className="flex flex-wrap gap-2">
             {stack.map((tech) => (
-              <Badge key={tech} variant="default">
+              <Badge key={tech}>
                 {tech}
               </Badge>
             ))}
@@ -98,24 +98,18 @@ export function CaseStudyLayout({
         {links && (
           <div className="flex flex-wrap gap-4 mb-8">
             {links.repo && (
-              <Button variant="outline">
-                <a href={links.repo} target="_blank" rel="noopener noreferrer">
-                  View Code
-                </a>
+              <Button href={links.repo} className="bg-neutral-800 text-neutral-300 hover:bg-neutral-700">
+                View Code
               </Button>
             )}
             {links.demo && (
-              <Button variant="outline">
-                <a href={links.demo} target="_blank" rel="noopener noreferrer">
-                  Live Demo
-                </a>
+              <Button href={links.demo} className="bg-neutral-800 text-neutral-300 hover:bg-neutral-700">
+                Live Demo
               </Button>
             )}
             {links.dashboard && (
-              <Button variant="outline">
-                <a href={links.dashboard} target="_blank" rel="noopener noreferrer">
-                  Dashboard
-                </a>
+              <Button href={links.dashboard} className="bg-neutral-800 text-neutral-300 hover:bg-neutral-700">
+                Dashboard
               </Button>
             )}
           </div>
