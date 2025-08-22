@@ -1,8 +1,8 @@
-import Card from '@/components/ui/Card'
-import Badge from '@/components/ui/Badge'
-import Button from '@/components/ui/Button'
-import Chip from '@/components/ui/Chip'
-import Metric from '@/components/ui/Metric'
+import Card from '@/components/ui/card'
+import Badge from '@/components/ui/badge'
+import Button from '@/components/ui/button'
+import Chip from '@/components/ui/chip'
+import Metric from '@/components/ui/metric'
 
 export default function ProjectsPage() {
   const projects = [

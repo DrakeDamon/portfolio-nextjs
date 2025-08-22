@@ -1,6 +1,6 @@
-import Card from '@/components/ui/Card'
-import Chip from '@/components/ui/Chip'
-import Badge from '@/components/ui/Badge'
+import Card from '@/components/ui/card'
+import Chip from '@/components/ui/chip'
+import Badge from '@/components/ui/badge'
 
 const experiences = [
   {

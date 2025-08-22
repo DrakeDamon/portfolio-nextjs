@@ -2,7 +2,7 @@ import './globals.css';
 import { PropsWithChildren } from 'react';
 import { ThemeProvider } from 'next-themes';
 import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+import Footer from '@/components/footer';
 
 export const metadata = {
   title: "David (Drake) Damon — Data Engineer",

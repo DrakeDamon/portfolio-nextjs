@@ -1,7 +1,7 @@
-import Button from '@/components/ui/Button'
-import Card from '@/components/ui/Card'
-import Chip from '@/components/ui/Chip'
-import Metric from '@/components/ui/Metric'
+import Button from '@/components/ui/button'
+import Card from '@/components/ui/card'
+import Chip from '@/components/ui/chip'
+import Metric from '@/components/ui/metric'
 
 export default function HomePage() {
   return (
