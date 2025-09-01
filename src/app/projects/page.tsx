@@ -7,6 +7,38 @@ import Metric from '@/components/ui/metric'
 export default function ProjectsPage() {
   const projects = [
     {
+      title: "Earthquakes Lakehouse (Azure)",
+      summary: "ADF → ADLS Gen2 → Databricks Delta (Bronze/Silver/Gold) with dbt marts (eq_daily_metrics, eq_top100) and Azure Monitor alerts.",
+      role: "Data Engineer",
+      dates: "2024",
+      metrics: [
+        { label: "ADF Schedule", value: "18:00" },
+        { label: "Medallion", value: "B/S/G" },
+        { label: "Quality", value: "dbt tests" },
+        { label: "Alerts", value: "Azure Monitor" }
+      ],
+      stack: ["Azure", "ADF", "ADLS Gen2", "Databricks/Delta", "dbt", "GitHub Actions", "Azure Monitor"],
+      slug: "earthquakes-lakehouse",
+      caseStudyHref: "https://github.com/DrakeDamon/azure-mini-quake/blob/main/README.md",
+      codeHref: "https://github.com/DrakeDamon/azure-mini-quake"
+    },
+    {
+      title: "Taxi Lakehouse (Azure)",
+      summary: "End-to-end ADF Copy to ADLS, Databricks Bronze/Silver, and dbt Gold fact fct_taxi_daily with failure email alerts.",
+      role: "Data Engineer",
+      dates: "2024",
+      metrics: [
+        { label: "ADF Schedule", value: "06:00" },
+        { label: "Layers", value: "Bronze/Silver" },
+        { label: "Gold", value: "fct_taxi_daily" },
+        { label: "Alerts", value: "Email" }
+      ],
+      stack: ["Azure", "ADF", "ADLS Gen2", "Databricks/Delta", "dbt", "GitHub Actions"],
+      slug: "taxi-lakehouse",
+      caseStudyHref: "https://github.com/DrakeDamon/azure-mini-taxi/blob/main/README.md",
+      codeHref: "https://github.com/DrakeDamon/azure-mini-taxi"
+    },
+    {
       title: "SEC EDGAR Financials Warehouse",
       summary: "Built a production-style lakehouse processing SEC financial data with dbt models, data quality gates, and cost optimization through partitioning and clustering.",
       role: "Data Engineer",
@@ -18,7 +50,7 @@ export default function ProjectsPage() {
         { label: "Daily Refresh", value: "06:00 UTC" }
       ],
       stack: ["GCP", "BigQuery", "dbt", "Great Expectations", "GitHub Actions", "Looker Studio"],
-      slug: "sec-edgar"
+      slug: "sec-edgar-warehouse"
     },
     {
       title: "Cloud-Native Crypto ETL",
@@ -95,9 +127,14 @@ export default function ProjectsPage() {
 
             {/* Actions */}
             <div className="flex flex-wrap gap-4">
-              <Button href={`/projects/${project.slug}`}>Read Case Study</Button>
-              <Button href="#" className="bg-neutral-800 text-neutral-300 hover:bg-neutral-700">View Code</Button>
-              <Button href="#" className="bg-neutral-800 text-neutral-300 hover:bg-neutral-700">Live Demo</Button>
+              <Button href={(project as any).caseStudyHref ?? `/projects/${project.slug}`}>Read Case Study</Button>
+              {Boolean((project as any).codeHref) && (
+                <Button href={(project as any).codeHref} className="bg-neutral-800 text-neutral-300 hover:bg-neutral-700">View Code</Button>
+              )}
+              {Boolean((project as any).codeHref) && (
+                <Button href={`${(project as any).codeHref}/stargazers`} className="bg-neutral-800 text-neutral-300 hover:bg-neutral-700">⭐ Star Repo</Button>
+              )}
+              <Button href={(project as any).demoHref ?? "/resume"} className="bg-neutral-800 text-neutral-300 hover:bg-neutral-700">Resume (PDF)</Button>
             </div>
           </Card>
         ))}

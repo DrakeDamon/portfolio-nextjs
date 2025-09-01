@@ -12,14 +12,14 @@ export default function HomePage() {
           David Damon
         </h1>
         <p className="text-xl md:text-2xl text-neutral-300 mb-8 max-w-3xl mx-auto">
-          Cloud-first, AI-accelerated data engineer building production ETL/ELT on GCP and Databricks
+          Azure-focused, AI-accelerated data engineer building production lakehouses (ADF → ADLS Gen2 → Databricks/Delta → dbt)
         </p>
         <div className="flex flex-wrap justify-center gap-4 mb-12">
-          <Chip>GCP</Chip>
-          <Chip>Databricks</Chip>
-          <Chip>BigQuery</Chip>
+          <Chip>Azure</Chip>
+          <Chip>ADF</Chip>
+          <Chip>Databricks/Delta</Chip>
           <Chip>dbt</Chip>
-          <Chip>MLflow</Chip>
+          <Chip>GitHub Actions</Chip>
         </div>
         <div className="flex flex-wrap justify-center gap-4">
           <Button href="/projects">View Projects</Button>
@@ -42,14 +42,14 @@ export default function HomePage() {
         <Card>
           <h2 className="text-3xl font-bold mb-6 text-emerald-400">About Me</h2>
           <p className="text-neutral-300 text-lg leading-relaxed mb-6">
-            Cloud-first, AI-accelerated data engineer who builds production ETL/ELT on GCP and Databricks, tracks models 
-            with MLflow, and surfaces results via APIs and UIs. I optimize for reliability, observability, and cost.
+            Azure-first, AI-accelerated data engineer who builds production lakehouses (ADF → ADLS Gen2 → Databricks Delta), ships dbt marts, 
+            and operationalizes with GitHub Actions and Azure Monitor. I optimize for reliability, observability, and cost.
           </p>
           <div className="flex flex-wrap gap-3 mb-6">
             <Chip>Data Lakehouse</Chip>
-            <Chip>ETL/ELT Pipelines</Chip>
-            <Chip>BigQuery</Chip>
-            <Chip>React Development</Chip>
+            <Chip>ADF Pipelines</Chip>
+            <Chip>Databricks Delta</Chip>
+            <Chip>Azure Monitor</Chip>
           </div>
           <Button href="/experience">Learn More</Button>
         </Card>
@@ -60,31 +60,33 @@ export default function HomePage() {
         <h2 className="text-3xl font-bold mb-12 text-center text-emerald-400">Featured Projects</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           <Card>
-            <h3 className="text-xl font-semibold mb-3 text-emerald-400">SEC EDGAR Financials Warehouse</h3>
+            <h3 className="text-xl font-semibold mb-3 text-emerald-400">Earthquakes Lakehouse (Azure)</h3>
             <p className="text-neutral-300 mb-4">
-              Built production-style lakehouse with dbt models, data quality gates, and 80-90% cost optimization through partitioning.
+              ADF → ADLS Gen2 → Databricks Delta (B/S/G) with dbt Gold marts and Azure Monitor alerts.
             </p>
             <div className="flex flex-wrap gap-2 mb-4">
-              <Chip>GCP</Chip>
-              <Chip>BigQuery</Chip>
+              <Chip>Azure</Chip>
+              <Chip>ADF</Chip>
+              <Chip>ADLS Gen2</Chip>
+              <Chip>Databricks/Delta</Chip>
               <Chip>dbt</Chip>
-              <Chip>Great Expectations</Chip>
             </div>
-            <Button href="/projects/sec-edgar">View Case Study</Button>
+            <Button href="/projects/earthquakes-lakehouse">View Case Study</Button>
           </Card>
           
           <Card>
-            <h3 className="text-xl font-semibold mb-3 text-emerald-400">Cloud-Native Crypto ETL</h3>
+            <h3 className="text-xl font-semibold mb-3 text-emerald-400">Taxi Lakehouse (Azure)</h3>
             <p className="text-neutral-300 mb-4">
-              Serverless ETL pipeline with automated data quality checks and cost-optimized queries at ~$2.36/month.
+              ADF Copy → ADLS → Databricks Bronze/Silver with dbt Gold fact fct_taxi_daily and email alerts.
             </p>
             <div className="flex flex-wrap gap-2 mb-4">
-              <Chip>Cloud Run</Chip>
-              <Chip>Terraform</Chip>
-              <Chip>BigQuery</Chip>
+              <Chip>Azure</Chip>
+              <Chip>ADF</Chip>
+              <Chip>ADLS Gen2</Chip>
+              <Chip>Databricks/Delta</Chip>
               <Chip>dbt</Chip>
             </div>
-            <Button href="/projects/crypto-etl">View Case Study</Button>
+            <Button href="/projects/taxi-lakehouse">View Case Study</Button>
           </Card>
           
           <Card>

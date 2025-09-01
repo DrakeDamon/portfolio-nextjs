@@ -5,44 +5,37 @@ import Badge from '@/components/ui/badge'
 const skillCategories = [
   {
     title: "Programming Languages",
-    skills: ["Python", "SQL", "JavaScript", "TypeScript", "R", "Java"]
+    skills: ["Python", "SQL", "JavaScript", "TypeScript"]
+  },
+  {
+    title: "Azure Data Platform",
+    skills: ["Azure", "Azure Data Factory", "ADLS Gen2", "Databricks", "Delta Lake", "dbt", "Azure Monitor"]
   },
   {
     title: "Data Engineering",
-    skills: ["Apache Spark", "PySpark", "Databricks", "Apache Kafka", "Apache Airflow", "Pandas", "Delta Lake", "Data Lakehouse"]
+    skills: ["Apache Spark", "PySpark", "Pandas", "Medallion Architecture", "Data Contracts"]
   },
   {
-    title: "Cloud Platforms",
-    skills: ["AWS", "Google Cloud Platform", "Azure", "Snowflake", "BigQuery", "Redshift"]
+    title: "Cloud & Ops",
+    skills: ["GitHub Actions", "ARM Templates", "Docker", "Linux", "CI/CD"]
   },
   {
-    title: "DevOps & Infrastructure",
-    skills: ["Docker", "Kubernetes", "Terraform", "GitHub Actions", "Jenkins", "CI/CD", "Linux", "Shell Scripting"]
-  },
-  {
-    title: "Machine Learning",
-    skills: ["TensorFlow", "PyTorch", "scikit-learn", "XGBoost", "MLflow", "Feature Engineering", "Model Deployment"]
+    title: "ML & Serving",
+    skills: ["scikit-learn", "XGBoost", "MLflow", "Feature Engineering"]
   },
   {
     title: "Web Development",
-    skills: ["React", "Next.js", "Node.js", "Express.js", "REST APIs", "GraphQL", "HTML5", "CSS3"]
+    skills: ["React", "Next.js", "Node.js", "REST APIs"]
   },
   {
-    title: "Databases",
-    skills: ["PostgreSQL", "MySQL", "MongoDB", "Redis", "DynamoDB", "Elasticsearch", "ClickHouse"]
-  },
-  {
-    title: "Analytics & BI",
-    skills: ["Tableau", "Power BI", "Looker", "Apache Superset", "Jupyter", "dbt", "Metabase"]
+    title: "Warehouses & BI",
+    skills: ["BigQuery", "PostgreSQL", "Looker Studio", "Great Expectations", "Jupyter"]
   }
 ]
 
 const certifications = [
-  "AWS Certified Solutions Architect",
-  "AWS Certified Data Engineer",
-  "Google Cloud Professional Data Engineer",
-  "Databricks Certified Data Engineer Associate",
-  "Snowflake SnowPro Core Certification"
+  "AWS Certified Cloud Practitioner",
+  "Databricks Certified Data Engineer Associate"
 ]
 
 export default function SkillsPage() {

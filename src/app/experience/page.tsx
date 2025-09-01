@@ -4,18 +4,18 @@ import Badge from '@/components/ui/badge'
 
 const experiences = [
   {
-    title: "React Engineer (Contract)",
-    company: "DevSoft",
+    title: "Data Engineer — Azure Lakehouse (Independent Projects)",
+    company: "Personal Projects",
     location: "Tampa, FL",
-    dates: "Jun 2022 – Present",
-    description: "Built and maintained React apps for 1,000+ users with performance optimizations and REST integrations.",
+    dates: "2024 – Present",
+    description: "Built end-to-end Azure lakehouses: ADF → ADLS Gen2 → Databricks Delta (Bronze/Silver/Gold) → dbt marts, with CI/CD and alerting.",
     achievements: [
-      "Implemented code-splitting and lazy-loading optimizations",
-      "Reduced median load time by approximately 40%",
-      "Built responsive React applications serving 1,000+ active users",
-      "Integrated REST APIs for seamless data flow and user experience"
+      "USGS Earthquakes: parameterized ADF ingest; daily 18:00 schedule; dbt mart eq_daily_metrics; Azure Monitor alerts",
+      "Taxi Lakehouse: ADF Copy → Databricks Bronze/Silver; dbt fact fct_taxi_daily; failure email alerts",
+      "Operationalized with GitHub Actions, Service Principal auth, and Databricks Secret Scopes",
+      "Implemented dbt tests (not_null/accepted_values) and structured logging runbooks"
     ],
-    technologies: ["React", "JavaScript", "REST APIs", "Performance Optimization", "Code Splitting"]
+    technologies: ["Azure", "ADF", "ADLS Gen2", "Databricks/Delta", "dbt", "GitHub Actions", "Azure Monitor"]
   },
   {
     title: "Biology Teacher",
@@ -30,27 +30,10 @@ const experiences = [
       "Applied data analysis skills to educational outcomes and student success metrics"
     ],
     technologies: ["Data Analysis", "Statistical Analysis", "Data Visualization", "Educational Technology"]
-  },
-  {
-    title: "CDL Driver",
-    company: "FedEx Freight",
-    location: "Tampa, FL",
-    dates: "2021 – 2023",
-    description: "Maintained excellent delivery performance with rigorous documentation and operational excellence.",
-    achievements: [
-      "Achieved 99.9% on-time delivery rate",
-      "Maintained rigorous documentation standards",
-      "Ensured safe and efficient freight transportation",
-      "Demonstrated reliability and attention to detail in logistics operations"
-    ],
-    technologies: ["Logistics Management", "Documentation Systems", "Quality Control", "Operations"]
   }
 ];
 
-const certifications = [
-  "AWS Certified Cloud Practitioner",
-  "Databricks Certified Data Engineer Associate"
-];
+const certifications = ["AWS Certified Cloud Practitioner", "Databricks Certified Data Engineer Associate"];
 
 const education = [
   {

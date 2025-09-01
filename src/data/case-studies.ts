@@ -21,6 +21,85 @@ export interface CaseStudy {
 
 export const allCaseStudies: CaseStudy[] = [
   {
+    title: "Earthquakes Lakehouse (Azure)",
+    slug: "earthquakes-lakehouse",
+    summary: "ADF → ADLS Gen2 → Databricks Delta (Bronze/Silver/Gold) with dbt marts and Azure Monitor alerts.",
+    role: "Data Engineer",
+    dates: "2024",
+    stack: ["Azure", "ADF", "ADLS Gen2", "Databricks/Delta", "dbt", "GitHub Actions", "Azure Monitor"],
+    metrics: [
+      { label: "ADF Schedule", value: "18:00", description: "Daily refresh time" },
+      { label: "Medallion", value: "B/S/G", description: "Bronze → Silver → Gold" },
+      { label: "Quality", value: "dbt tests", description: "not_null, accepted_values" },
+      { label: "Alerts", value: "Azure Monitor", description: "Failure notifications" }
+    ],
+    links: {
+      repo: "https://github.com/DrakeDamon/azure-mini-quake"
+    },
+    content: `
+<h2 id="problem">Problem</h2>
+<p>Operationalize ingest and curation for USGS earthquake events with reproducible schedules, quality checks, and business-ready marts.</p>
+
+<h2 id="architecture">Architecture</h2>
+<pre><code>ADF (Copy, params) → ADLS Gen2 (raw) → Databricks (Bronze → Silver → Gold) → dbt marts (eq_daily_metrics, eq_top100)</code></pre>
+<ul>
+<li><strong>ADF</strong>: Parameterized Copy (start/end date, min magnitude) and daily schedule</li>
+<li><strong>Databricks</strong>: Bronze persist, Silver normalization (event time, magnitude bucket, lat/lon/depth)</li>
+<li><strong>dbt</strong>: Gold marts with tests (not_null, accepted_values) enforced in CI</li>
+<li><strong>Ops</strong>: GitHub Actions CI; Azure Monitor alerts on failures; SPN + Secret Scopes</li>
+<li><strong>Runbook</strong>: Structured logging with row counts for triage</li>
+<li><strong>Security</strong>: Least-privilege IAM, Secret Scopes for OAuth</li>
+<li><strong>Cost</strong>: Partitioning and pruning in Delta tables</li>
+<li><a href="https://github.com/DrakeDamon/azure-mini-quake/blob/main/README.md" target="_blank" rel="noopener noreferrer">Repository README</a></li>
+  </ul>
+<h2 id="results-impact">Results &amp; Impact</h2>
+<ul>
+  <li>Daily SLAs with alerting via Azure Monitor</li>
+  <li>Contracted marts powering dashboard-friendly metrics</li>
+  <li>CI-enforced tests gatekeeping quality</li>
+</ul>
+`,
+    published: true
+  },
+  {
+    title: "Taxi Lakehouse (Azure)",
+    slug: "taxi-lakehouse",
+    summary: "ADF Copy to ADLS, Databricks Bronze/Silver, and dbt Gold fact fct_taxi_daily with email alerts and CI integration.",
+    role: "Data Engineer",
+    dates: "2024",
+    stack: ["Azure", "ADF", "ADLS Gen2", "Databricks/Delta", "dbt", "GitHub Actions"],
+    metrics: [
+      { label: "ADF Schedule", value: "06:00", description: "Daily trigger" },
+      { label: "Layers", value: "Bronze/Silver", description: "Refined ingestion" },
+      { label: "Gold", value: "fct_taxi_daily", description: "Business fact table" },
+      { label: "Alerts", value: "Email", description: "On failure" }
+    ],
+    links: {
+      repo: "https://github.com/DrakeDamon/azure-mini-taxi"
+    },
+    content: `
+<h2 id="problem">Problem</h2>
+<p>Deliver a reliable, scheduled taxi pipeline with validated Gold facts and pragmatic ops for failures and notebook deployment.</p>
+
+<h2 id="architecture">Architecture</h2>
+<pre><code>ADF Copy → ADLS Gen2 (raw) → Databricks (Bronze → Silver) → dbt (Gold: fct_taxi_daily)</code></pre>
+<ul>
+<li><strong>ADF</strong>: Daily 06:00 trigger; strict/warn validation toggle; robust filename handling</li>
+<li><strong>Databricks</strong>: Bronze ingestion; Silver cleansing and feature columns</li>
+<li><strong>dbt</strong>: Gold marts with tests and CI; contracts enforced</li>
+<li><strong>Ops</strong>: GitHub Actions to import notebooks; failure alerts via email</li>
+<li><a href="https://github.com/DrakeDamon/azure-mini-taxi/blob/main/README.md" target="_blank" rel="noopener noreferrer">Repository README</a></li>
+</ul>
+<h2 id="results-impact">Results &amp; Impact</h2>
+<ul>
+  <li>Predictable daily runs with actionable failure notifications</li>
+  <li>dbt Gold fact fct_taxi_daily enables downstream BI</li>
+  <li>Resilient ingestion handles raw filename variability</li>
+</ul>
+`,
+    published: true
+  },
+  {
     title: "SEC EDGAR Financials Warehouse",
     slug: "sec-edgar-warehouse", 
     summary: "Production-style lakehouse architecture processing SEC financial data with BigQuery, dbt, and automated data quality validation.",

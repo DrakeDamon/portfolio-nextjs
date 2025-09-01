@@ -26,7 +26,7 @@ export function HeroSection() {
           </motion.h1>
           
           <div className="flex flex-wrap justify-center items-center gap-2 mb-8">
-            {["DATA ENGINEER", "GCP", "DATABRICKS", "BIGQUERY", "MLflow", "dbt", "Terraform"].map((tech, index) => (
+            {["DATA ENGINEER", "AZURE", "ADF", "ADLS Gen2", "DATABRICKS/DELTA", "dbt", "GitHub Actions"].map((tech, index) => (
               <motion.span 
                 key={tech}
                 className="px-3 py-1 text-sm font-semibold bg-primary/10 text-primary rounded-full border border-primary/20"
@@ -45,8 +45,8 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.8 }}
           >
-            Cloud-first, AI-accelerated data engineer who builds production ETL/ELT on GCP & Databricks, 
-            tracks models with MLflow, and ships results to UIs and APIs—optimized for reliability, observability, and cost.
+            Azure-focused, AI-accelerated data engineer building production lakehouses: ADF ingest → ADLS Gen2 → Databricks Delta (Bronze/Silver/Gold) → dbt marts, 
+            operationalized with GitHub Actions and Azure Monitor for reliability, observability, and cost control.
           </motion.p>
           
           <motion.div 
