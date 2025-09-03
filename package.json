@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "GITHUB_PAGES=true next build && next-sitemap",
+    "build": "GITHUB_PAGES=true next build && next export && next-sitemap",
     "start": "next start",
-    "export": "next build",
+    "export": "next export",
     "typecheck": "tsc --noEmit",
     "lint": "next lint",
     "deploy": "rm -rf out && npm run build && touch out/.nojekyll && npx gh-pages -d out -b gh-pages -m \"deploy\""
