@@ -9,7 +9,17 @@ const skillCategories = [
   },
   {
     title: "Azure Data Platform",
-    skills: ["Azure", "Azure Data Factory", "ADLS Gen2", "Databricks", "Delta Lake", "dbt", "Azure Monitor"]
+    skills: [
+      "Azure",
+      "Azure Data Factory",
+      "ADLS Gen2",
+      "Databricks",
+      "Delta Lake",
+      "dbt",
+      "Azure Monitor",
+      "Service Principal (OAuth)",
+      "Secret Scopes"
+    ]
   },
   {
     title: "Data Engineering",
@@ -17,7 +27,7 @@ const skillCategories = [
   },
   {
     title: "Cloud & Ops",
-    skills: ["GitHub Actions", "ARM Templates", "Docker", "Linux", "CI/CD"]
+    skills: ["GitHub Actions", "ARM Templates", "Docker", "Linux", "CI/CD", "Alerting"]
   },
   {
     title: "ML & Serving",

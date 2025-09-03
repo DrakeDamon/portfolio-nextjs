@@ -18,6 +18,20 @@ const experiences = [
     technologies: ["Azure", "ADF", "ADLS Gen2", "Databricks/Delta", "dbt", "GitHub Actions", "Azure Monitor"]
   },
   {
+    title: "React Engineer (Contract)",
+    company: "DevSoft",
+    location: "Tampa, FL",
+    dates: "Jun 2022 – Present",
+    description: "Built and maintained React apps for users with performance optimizations and REST integrations.",
+    achievements: [
+      "Reduced median load time ~40% via code-splitting and lazy-loading",
+      "Integrated REST APIs with robust error handling and retries",
+      "Improved UX with accessibility and responsive design best practices",
+      "Collaborated with product to scope and deliver features on schedule"
+    ],
+    technologies: ["React", "Next.js", "TypeScript", "REST APIs", "Performance"]
+  },
+  {
     title: "Biology Teacher",
     company: "Freedom High School (HCPS)",
     location: "Tampa, FL",

@@ -27,13 +27,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Metrics Section */}
+      {/* Metrics Section (resume-aligned) */}
       <section className="py-16">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          <Metric label="Years Experience" value="5+" />
-          <Metric label="Projects Completed" value="25+" />
-          <Metric label="Technologies Mastered" value="15+" />
-          <Metric label="Data Points Processed" value="1M+" />
+          <Metric label="dbt Tests" value="14/14" />
+          <Metric label="Cost Reduction" value="80–90%" />
+          <Metric label="Daily Schedules" value="06:00 / 18:00" />
+          <Metric label="App Users" value="1,000+" />
         </div>
       </section>
 
