@@ -31,13 +31,13 @@ export function FeaturedMetrics() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {metrics.map((metric, index) => (
             <Card key={index} className="text-center">
-              <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">
+              <div className="text-3xl font-bold text-emerald-400 mb-2">
                 {metric.value}
               </div>
-              <div className="font-semibold text-gray-900 dark:text-white mb-1">
+              <div className="font-semibold text-neutral-100 mb-1">
                 {metric.label}
               </div>
-              <div className="text-sm text-gray-600 dark:text-gray-300">
+              <div className="text-sm text-neutral-400">
                 {metric.description}
               </div>
             </Card>
