@@ -1,5 +1,6 @@
 import Button from '@/components/ui/button'
 import Card from '@/components/ui/card'
+import Chip from '@/components/ui/chip'
 
 export default function ResumePage() {
   return (
@@ -7,7 +8,7 @@ export default function ResumePage() {
       <div className="text-center mb-16">
         <h1 className="text-5xl font-bold mb-6 text-emerald-400">Resume</h1>
         <p className="text-xl text-neutral-300 max-w-3xl mx-auto mb-8">
-          Azure-focused, AI-accelerated data engineer building production lakehouses with reliability, observability, and cost control.
+          Data Engineer delivering production-grade lakehouses and analytics platforms across cloud environments.
         </p>
         <Button href="/resume.pdf" className="mb-8">Download Resume (PDF)</Button>
       </div>
@@ -15,7 +16,8 @@ export default function ResumePage() {
       <Card className="max-w-4xl mx-auto">
         <div className="text-center mb-8">
           <h2 className="text-4xl font-bold mb-2 text-emerald-400">David Damon</h2>
-          <p className="text-xl text-neutral-300 mb-4">Data Engineer — Azure Lakehouse (ADF · ADLS Gen2 · Databricks/Delta · dbt · Azure Monitor · GitHub Actions)</p>
+          <p className="text-xl text-neutral-300 mb-2">Data Engineer</p>
+          <p className="text-lg text-neutral-400 mb-4">ETL/ELT · Cloud Platforms (Azure, GCP) · Databricks/Spark/Delta · dbt · Monitoring · CI/CD</p>
           <div className="flex flex-wrap justify-center gap-6 text-neutral-400">
             <span>📍 Tampa, FL</span>
             <span>📧 dddamon06@gmail.com</span>
@@ -24,68 +26,138 @@ export default function ResumePage() {
             <span>💻 github.com/DrakeDamon</span>
           </div>
         </div>
-        <div className="prose prose-invert max-w-none">
-          <h3 className="text-2xl font-semibold mb-4 text-emerald-400">Professional Summary</h3>
-          <p className="text-neutral-300 mb-6">
-            Azure, AI-accelerated data engineer building ADF ingest → ADLS Gen2 → Databricks Delta (Bronze/Silver/Gold) → dbt Gold marts, operationalized with GitHub Actions, Service Principal + Secret Scopes (OAuth), and Azure Monitor alerts.
-          </p>
 
-          <h3 className="text-2xl font-semibold mb-4 text-emerald-400">Core Skills</h3>
-          <div className="grid md:grid-cols-2 gap-6 mb-6">
-            <div>
-              <h4 className="text-lg font-semibold mb-2 text-emerald-400">Azure Data Platform</h4>
-              <ul className="text-neutral-300 space-y-1">
-                <li>• ADF (Copy, triggers, params)</li>
-                <li>• ADLS Gen2</li>
-                <li>• Databricks (Spark, Delta)</li>
-                <li>• Azure Monitor</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-lg font-semibold mb-2 text-emerald-400">Data Engineering</h4>
-              <ul className="text-neutral-300 space-y-1">
-                <li>• PySpark/Spark, SQL (window functions)</li>
-                <li>• Medallion (Bronze/Silver/Gold)</li>
-                <li>• dbt (Core) & data contracts</li>
-                <li>• Partition/cluster strategies</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-lg font-semibold mb-2 text-emerald-400">Ops & CI/CD</h4>
-              <ul className="text-neutral-300 space-y-1">
-                <li>• GitHub Actions, scheduled triggers</li>
-                <li>• Alerts, structured logging, runbooks</li>
-                <li>• ARM templates, Docker</li>
-                <li>• Least-privilege IAM</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-lg font-semibold mb-2 text-emerald-400">Programming & Quality</h4>
-              <ul className="text-neutral-300 space-y-1">
-                <li>• Python 3.11, TypeScript</li>
-                <li>• REST/JSON interop</li>
-                <li>• dbt tests, Great Expectations</li>
-                <li>• Secret Scopes (OAuth)</li>
-              </ul>
-            </div>
-          </div>
+        <div className="space-y-8">
+          <section>
+            <h3 className="text-2xl font-semibold mb-4 text-emerald-400">Profile</h3>
+            <p className="text-neutral-300">
+              Data Engineer delivering production-grade lakehouses and analytics platforms across cloud environments. Experienced in orchestrating ETL/ELT pipelines, building medallion architectures, applying data quality frameworks, and operationalizing deployments with CI/CD and monitoring. Strong focus on clean architecture, profiling, config-driven pipelines, and clear documentation to ensure scalability and reliability.
+            </p>
+          </section>
 
-          <h3 className="text-2xl font-semibold mb-4 text-emerald-400">Key Achievements</h3>
-          <ul className="text-neutral-300 space-y-2 mb-6">
-            <li>• dbt tests: 14/14; 100% validation success</li>
-            <li>• Query cost reduction: 80–90% via partition + clustering</li>
-            <li>• Daily schedules: 06:00 & 18:00 with Azure Monitor alerts</li>
-            <li>• React apps: ~40% median load time reduction</li>
-          </ul>
+          <section>
+            <h3 className="text-2xl font-semibold mb-4 text-emerald-400">Core Skills</h3>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 className="text-lg font-semibold mb-3 text-emerald-400">Cloud & Orchestration</h4>
+                <p className="text-neutral-300 text-sm">Azure Data Factory, Airflow, Azure Monitor, ARM Templates</p>
+              </div>
+              <div>
+                <h4 className="text-lg font-semibold mb-3 text-emerald-400">Storage & Compute</h4>
+                <p className="text-neutral-300 text-sm">ADLS Gen2, GCS, Databricks (Spark, Delta Lake), BigQuery, SQL Warehouse</p>
+              </div>
+              <div>
+                <h4 className="text-lg font-semibold mb-3 text-emerald-400">Transform & Modeling</h4>
+                <p className="text-neutral-300 text-sm">PySpark, dbt (Core), SQL (window functions), Medallion architecture</p>
+              </div>
+              <div>
+                <h4 className="text-lg font-semibold mb-3 text-emerald-400">Quality & Governance</h4>
+                <p className="text-neutral-300 text-sm">dbt tests (not_null/unique/accepted_values), Great Expectations, IAM principles</p>
+              </div>
+              <div>
+                <h4 className="text-lg font-semibold mb-3 text-emerald-400">Ops & CI/CD</h4>
+                <p className="text-neutral-300 text-sm">GitHub Actions, structured logging, runbooks, cost/perf optimization, Docker</p>
+              </div>
+              <div>
+                <h4 className="text-lg font-semibold mb-3 text-emerald-400">Programming & Interop</h4>
+                <p className="text-neutral-300 text-sm">Python 3.11 (OOP, Pandas, requests, typing), REST/JSON APIs</p>
+              </div>
+            </div>
+          </section>
 
-          <h3 className="text-2xl font-semibold mb-4 text-emerald-400">Certifications</h3>
-          <ul className="text-neutral-300 space-y-1 mb-6">
-            <li>• AWS Certified Cloud Practitioner</li>
-            <li>• Databricks Certified Data Engineer Associate</li>
-          </ul>
+          <section>
+            <h3 className="text-2xl font-semibold mb-4 text-emerald-400">Selected Projects</h3>
+            <div className="space-y-6">
+              <div>
+                <h4 className="text-lg font-semibold text-emerald-400 mb-2">E-commerce Data Warehouse — <span className="text-neutral-400 font-normal">GCP + BigQuery + dbt + GitHub Actions (Production Ready)</span></h4>
+                <ul className="text-neutral-300 space-y-1 text-sm">
+                  <li>• Built cloud-native medallion architecture processing <strong>116K+ records</strong> with <strong>58% intelligent deduplication</strong></li>
+                  <li>• Implemented NULL-safe transformations, incremental MERGE models, and <strong>18/19 comprehensive tests passing</strong></li>
+                  <li>• Deployed CI/CD pipeline with Workload Identity Federation; <strong>complete audit trail</strong> with 17,996 QA records</li>
+                  <li>• Generated interactive dbt documentation and <strong>zero data loss</strong> enterprise-grade reliability</li>
+                </ul>
+              </div>
 
-          <div className="text-center mt-8">
-            <Button href="/experience">View Detailed Experience</Button>
+              <div>
+                <h4 className="text-lg font-semibold text-emerald-400 mb-2">Earthquakes Lakehouse — <span className="text-neutral-400 font-normal">ADF → ADLS Gen2 → Databricks (Delta) + dbt, Azure Monitor</span></h4>
+                <ul className="text-neutral-300 space-y-1 text-sm">
+                  <li>• Parameterized ingestion (start/end date, min magnitude) from USGS into ADLS</li>
+                  <li>• Databricks Bronze → Silver → Gold refinement; dbt marts for daily metrics, top 100 quakes, dashboards</li>
+                  <li>• Enforced dbt tests in CI; daily scheduled loads; Monitor alerts + triage runbook</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-emerald-400 mb-2">SEC EDGAR Financials Warehouse — <span className="text-neutral-400 font-normal">GCP + BigQuery + dbt + GE (Looker Studio)</span></h4>
+                <ul className="text-neutral-300 space-y-1 text-sm">
+                  <li>• Ingested SEC filings into a medallion architecture (sec_raw → sec_curated → sec_viz)</li>
+                  <li>• Partitioned/clustered BigQuery marts cut scanned bytes by <strong>80–90%</strong></li>
+                  <li>• 14 dbt tests, 100% GE validations; daily scheduled pipeline with smoke checks</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-emerald-400 mb-2">Cloud-Native Crypto ETL — <span className="text-neutral-400 font-normal">GCP + dbt + Terraform + GE (Looker Studio)</span></h4>
+                <ul className="text-neutral-300 space-y-1 text-sm">
+                  <li>• Cloud Run Jobs + Scheduler → GCS → BigQuery partitioned tables</li>
+                  <li>• Rolling analytics (7/30/90-day MAs, volatility, golden-cross)</li>
+                  <li>• dbt + GE validations; <strong>~$2.36/mo</strong> query spend with bytes-scanned proof</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-emerald-400 mb-2">Recruit Reveal — <span className="text-neutral-400 font-normal">Low-Latency Model Serving on Databricks</span></h4>
+                <ul className="text-neutral-300 space-y-1 text-sm">
+                  <li>• Feature pipelines (z-scores, encodings, missing-value flags)</li>
+                  <li>• XGBoost models tracked in MLflow; deployed as SQL UDFs returning JSON predictions</li>
+                  <li>• Hardened with dtype guards; surfaced through a Next.js evaluation UI</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h3 className="text-2xl font-semibold mb-4 text-emerald-400">Experience</h3>
+            <div className="space-y-4">
+              <div>
+                <h4 className="text-lg font-semibold text-emerald-400">React Engineer (Contract)</h4>
+                <p className="text-neutral-400 text-sm mb-2">DevSoft, Tampa, FL | Jun 2022 – Present</p>
+                <ul className="text-neutral-300 space-y-1 text-sm">
+                  <li>• Built React apps with code-splitting, lazy-loading, and REST API integrations</li>
+                  <li>• Reduced median load time by <strong>~40%</strong> through performance optimizations</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-emerald-400">Biology Teacher</h4>
+                <p className="text-neutral-400 text-sm mb-2">Freedom High School (HCPS), Tampa, FL | Aug 2023 – Present</p>
+                <ul className="text-neutral-300 space-y-1 text-sm">
+                  <li>• Analyzed data for <strong>150+ students</strong>, producing visualization/statistical reports</li>
+                  <li>• Informed instruction for an 8-member team using data insights</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h3 className="text-2xl font-semibold mb-4 text-emerald-400">Education</h3>
+            <div className="space-y-3">
+              <div>
+                <h4 className="text-lg font-semibold text-emerald-400">Flatiron School</h4>
+                <p className="text-neutral-300 text-sm">Full-Stack Web Development (Python/Flask & JavaScript), 2025 — Tampa, FL</p>
+              </div>
+              <div>
+                <h4 className="text-lg font-semibold text-emerald-400">Friends University</h4>
+                <p className="text-neutral-300 text-sm">B.S., Biology, 2021 — Wichita, KS</p>
+              </div>
+            </div>
+          </section>
+
+          <div className="text-center mt-8 pt-6 border-t border-neutral-800">
+            <div className="flex flex-wrap justify-center gap-4">
+              <Button href="/projects">View All Projects</Button>
+              <Button href="/contact" className="bg-neutral-800 text-neutral-300 hover:bg-neutral-700">Get In Touch</Button>
+            </div>
           </div>
         </div>
       </Card>
