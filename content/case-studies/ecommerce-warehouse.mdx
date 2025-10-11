@@ -1,0 +1,148 @@
+---
+title: "E-commerce Data Warehouse"
+slug: "ecommerce-warehouse"
+summary: "Production-ready cloud-native data warehouse showcasing modern data engineering practices with Medallion Architecture on Google Cloud Platform."
+role: "Data Engineer"
+dates: "2024"
+stack: ["GCP", "BigQuery", "dbt Core", "GitHub Actions", "Workload Identity", "Mermaid", "Python"]
+metrics:
+  - label: "Records Processed"
+    value: "116,294"
+    description: "Raw CSV to analytics-ready tables"
+  - label: "Data Deduplication"
+    value: "58%"
+    description: "60,398 → 27,659 sales records"
+  - label: "Test Coverage"
+    value: "18/19"
+    description: "Comprehensive data quality tests"
+  - label: "Pipeline Speed"
+    value: "8 seconds"
+    description: "End-to-end transformation"
+links:
+  repo: "https://github.com/DrakeDamon/E-commerce-warehouse"
+  docs: "http://localhost:8080"
+published: true
+---
+
+## Problem
+
+E-commerce businesses need reliable, scalable data infrastructure to support analytics and business intelligence. Raw transactional data from multiple systems (CRM, ERP) requires cleaning, deduplication, and transformation into analytics-ready formats with guaranteed data quality and complete audit trails.
+
+## Constraints
+
+- Multiple data sources with varying schemas and quality
+- Significant data duplication requiring intelligent deduplication strategies
+- Need for NULL-safe transformations and robust surrogate key generation
+- Production-grade CI/CD requirements with secure authentication
+- Complete audit trail for governance and compliance
+- Zero data loss tolerance for financial data
+
+## Architecture
+
+Built a cloud-native medallion architecture following modern data engineering best practices:
+
+```
+CSV Sources → GCS → BigQuery Bronze → dbt Transform → Silver/Gold → BI Analytics
+```
+
+### Data Flow
+1. **Bronze Layer**: Raw CSV ingestion to BigQuery (6 source tables, 116K+ records)
+2. **Silver Layer**: Cleaned and deduplicated data with quality validations
+3. **Gold Layer**: Star schema optimized for analytics with incremental MERGE
+4. **QA Layer**: Complete audit trail tracking all data quality issues
+
+### Key Tables
+- **Bronze**: `crm_cust_info`, `crm_prd_info`, `crm_sales_details`, `erp_*` tables
+- **Silver**: `customers` (18,494), `products` (397), `sales` (27,659)
+- **Gold**: `dim_customers`, `dim_products`, `fact_sales` (star schema)
+- **QA**: `qa_issues` (17,996 audit records)
+
+## Pipeline Implementation
+
+### Advanced dbt Features
+- **NULL-Safe Transformations**: COALESCE patterns with farm_fingerprint for robust surrogate keys
+- **Intelligent Deduplication**: ROW_NUMBER() with priority-based ordering for name completeness
+- **Incremental Models**: MERGE strategy for performance optimization
+- **Comprehensive Testing**: 19 tests covering uniqueness, referential integrity, data quality
+
+### Data Quality Engineering
+```sql
+-- Example: NULL-safe surrogate key generation
+concat('sale_', cast(abs(farm_fingerprint(concat(
+  coalesce(sale_id, 'NO_ID'), '||',
+  coalesce(cast(order_date as string), 'NO_DATE'), '||',
+  coalesce(cast(quantity as string), 'NO_QTY')
+))) as string)) as sale_key
+```
+
+### CI/CD Pipeline
+- **GitHub Actions**: Automated PR checks and production deployment
+- **Workload Identity Federation**: Secure GCP authentication without service account keys
+- **Automated Testing**: All 19 data quality tests run on every PR
+- **Documentation**: Auto-generated dbt docs with interactive lineage
+
+## Results & Impact
+
+### Data Processing Success
+- **116,294 → 79,153 records**: 32% intelligent deduplication across all layers
+- **Zero Data Loss**: Complete audit trail with 17,996 QA records
+- **100% Critical Coverage**: 18/19 comprehensive tests passing
+- **Production Ready**: 8-second end-to-end pipeline execution
+
+### Data Quality Achievements
+- **NULL-Safe Processing**: 100% valid surrogate key generation
+- **Smart Deduplication**: Priority-based customer record consolidation
+- **Complete Validation**: Automated testing preventing data quality issues
+- **Audit Transparency**: Full lineage and quality tracking
+
+### Technical Excellence
+- **Medallion Architecture**: Industry-standard Bronze → Silver → Gold pattern
+- **Modern Stack**: dbt Core v1.10.2, BigQuery serverless, cloud-native design
+- **DevOps Integration**: GitHub Actions with secure OIDC authentication
+- **Documentation**: Interactive dbt docs with visual lineage and data catalog
+
+## Architecture Highlights
+
+### Visual Data Flow
+Complete mermaid diagrams showcasing:
+- End-to-end data flow from sources to analytics
+- Star schema design with fact and dimension tables
+- dbt model lineage and dependencies
+- Quality assurance and audit trail integration
+
+### Enterprise Features
+- **Workload Identity Federation**: No service account keys stored
+- **Incremental Processing**: Only changed data processed for efficiency
+- **Comprehensive Monitoring**: All transformations logged and validated
+- **Scalable Design**: Cloud-native architecture that grows with data volume
+
+## Performance & Optimization
+
+### Query Performance
+- **Star Schema Design**: Optimized for BI tool consumption
+- **Incremental Models**: MERGE strategy reduces processing time
+- **Partitioning Ready**: Architecture supports BigQuery partitioning
+- **Cost Optimization**: Serverless compute with pay-per-query model
+
+### Development Efficiency
+- **dbt Documentation**: Auto-generated lineage and catalog
+- **CI/CD Integration**: Automated validation and deployment
+- **Quality Gates**: Comprehensive testing prevents production issues
+- **Reproducible Builds**: Version-controlled transformations and tests
+
+## What I'd Improve Next
+
+### Advanced Monitoring
+- Implement dbt Cloud for enhanced orchestration and monitoring
+- Add data freshness checks and automated alerting
+- Create custom data quality dashboards with real-time metrics
+
+### Scale & Performance
+- Add BigQuery partitioning and clustering for large-scale queries
+- Implement streaming ingestion for real-time analytics
+- Advanced cost optimization with query result caching
+
+### Enhanced Analytics
+- Machine learning feature engineering pipelines
+- Advanced customer segmentation and product analytics
+- Real-time dashboard integration with modern BI tools

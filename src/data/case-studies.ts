@@ -21,6 +21,83 @@ export interface CaseStudy {
 
 export const allCaseStudies: CaseStudy[] = [
   {
+    title: "E-commerce Data Warehouse",
+    slug: "ecommerce-warehouse",
+    summary: "Production-ready cloud-native data warehouse showcasing modern data engineering practices with Medallion Architecture on Google Cloud Platform.",
+    role: "Data Engineer",
+    dates: "2024",
+    stack: ["GCP", "BigQuery", "dbt Core", "GitHub Actions", "Workload Identity", "Mermaid", "Python"],
+    metrics: [
+      {
+        label: "Records Processed",
+        value: "116,294",
+        description: "Raw CSV to analytics-ready tables"
+      },
+      {
+        label: "Data Deduplication",
+        value: "58%",
+        description: "60,398 → 27,659 sales records"
+      },
+      {
+        label: "Test Coverage",
+        value: "18/19",
+        description: "Comprehensive data quality tests"
+      },
+      {
+        label: "Pipeline Speed",
+        value: "8 seconds",
+        description: "End-to-end transformation"
+      }
+    ],
+    links: {
+      repo: "https://github.com/DrakeDamon/E-commerce-warehouse"
+    },
+    content: `
+<h2 id="problem">Problem</h2>
+<p>E-commerce businesses need reliable, scalable data infrastructure to support analytics and business intelligence. Raw transactional data from multiple systems (CRM, ERP) requires cleaning, deduplication, and transformation into analytics-ready formats with guaranteed data quality and complete audit trails.</p>
+
+<h2 id="constraints">Constraints</h2>
+<ul>
+<li>Multiple data sources with varying schemas and quality</li>
+<li>Significant data duplication requiring intelligent deduplication strategies</li>
+<li>Need for NULL-safe transformations and robust surrogate key generation</li>
+<li>Production-grade CI/CD requirements with secure authentication</li>
+<li>Complete audit trail for governance and compliance</li>
+<li>Zero data loss tolerance for financial data</li>
+</ul>
+
+<h2 id="architecture">Architecture</h2>
+<p>Built a cloud-native medallion architecture following modern data engineering best practices:</p>
+<pre><code>CSV Sources → GCS → BigQuery Bronze → dbt Transform → Silver/Gold → BI Analytics</code></pre>
+
+<h3>Data Flow</h3>
+<ol>
+<li><strong>Bronze Layer</strong>: Raw CSV ingestion to BigQuery (6 source tables, 116K+ records)</li>
+<li><strong>Silver Layer</strong>: Cleaned and deduplicated data with quality validations</li>
+<li><strong>Gold Layer</strong>: Star schema optimized for analytics with incremental MERGE</li>
+<li><strong>QA Layer</strong>: Complete audit trail tracking all data quality issues</li>
+</ol>
+
+<h2 id="results-impact">Results & Impact</h2>
+<h3>Data Processing Success</h3>
+<ul>
+<li><strong>116,294 → 79,153 records</strong>: 32% intelligent deduplication across all layers</li>
+<li><strong>Zero Data Loss</strong>: Complete audit trail with 17,996 QA records</li>
+<li><strong>100% Critical Coverage</strong>: 18/19 comprehensive tests passing</li>
+<li><strong>Production Ready</strong>: 8-second end-to-end pipeline execution</li>
+</ul>
+
+<h3>Technical Excellence</h3>
+<ul>
+<li><strong>NULL-Safe Processing</strong>: 100% valid surrogate key generation</li>
+<li><strong>Smart Deduplication</strong>: Priority-based customer record consolidation</li>
+<li><strong>Complete Validation</strong>: Automated testing preventing data quality issues</li>
+<li><strong>Enterprise CI/CD</strong>: GitHub Actions with Workload Identity Federation</li>
+</ul>
+    `,
+    published: true
+  },
+  {
     title: "Earthquakes Lakehouse (Azure)",
     slug: "earthquakes-lakehouse",
     summary: "ADF → ADLS Gen2 → Databricks Delta (Bronze/Silver/Gold) with dbt marts and Azure Monitor alerts.",

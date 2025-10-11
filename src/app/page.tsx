@@ -12,7 +12,7 @@ export default function HomePage() {
           David Damon
         </h1>
         <p className="text-xl md:text-2xl text-neutral-300 mb-8 max-w-3xl mx-auto">
-          Azure-focused, AI-accelerated data engineer building production lakehouses (ADF → ADLS Gen2 → Databricks/Delta → dbt)
+          ETL/ELT · Cloud Platforms (Azure, GCP) · Databricks/Spark/Delta · dbt · Monitoring · CI/CD
         </p>
         <div className="flex flex-wrap justify-center gap-4 mb-12">
           <Chip>Azure</Chip>
@@ -42,8 +42,7 @@ export default function HomePage() {
         <Card>
           <h2 className="text-3xl font-bold mb-6 text-emerald-400">About Me</h2>
           <p className="text-neutral-300 text-lg leading-relaxed mb-6">
-            Azure-first, AI-accelerated data engineer who builds production lakehouses (ADF → ADLS Gen2 → Databricks Delta), ships dbt marts, 
-            and operationalizes with GitHub Actions and Azure Monitor. I optimize for reliability, observability, and cost.
+            Data Engineer delivering production-grade lakehouses and analytics platforms across cloud environments. Experienced in orchestrating ETL/ELT pipelines, building medallion architectures, applying data quality frameworks, and operationalizing deployments with CI/CD and monitoring. Strong focus on clean architecture, profiling, config-driven pipelines, and clear documentation to ensure scalability and reliability.
           </p>
           <div className="flex flex-wrap gap-3 mb-6">
             <Chip>Data Lakehouse</Chip>
