@@ -59,6 +59,21 @@ export default function HomePage() {
         <h2 className="text-3xl font-bold mb-12 text-center text-emerald-400">Featured Projects</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           <Card>
+            <h3 className="text-xl font-semibold mb-3 text-emerald-400">E-commerce Data Warehouse</h3>
+            <p className="text-neutral-300 mb-4">
+              Production-ready cloud-native data warehouse with Medallion Architecture processing 116K+ records with 58% intelligent deduplication.
+            </p>
+            <div className="flex flex-wrap gap-2 mb-4">
+              <Chip>GCP</Chip>
+              <Chip>BigQuery</Chip>
+              <Chip>dbt Core</Chip>
+              <Chip>GitHub Actions</Chip>
+              <Chip>Workload Identity</Chip>
+            </div>
+            <Button href="/projects/ecommerce-warehouse">View Case Study</Button>
+          </Card>
+          
+          <Card>
             <h3 className="text-xl font-semibold mb-3 text-emerald-400">Earthquakes Lakehouse (Azure)</h3>
             <p className="text-neutral-300 mb-4">
               ADF → ADLS Gen2 → Databricks Delta (B/S/G) with dbt Gold marts and Azure Monitor alerts.

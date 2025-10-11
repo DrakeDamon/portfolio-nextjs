@@ -7,6 +7,22 @@ import Metric from '@/components/ui/metric'
 export default function ProjectsPage() {
   const projects = [
     {
+      title: "E-commerce Data Warehouse",
+      summary: "Production-ready cloud-native data warehouse showcasing modern data engineering practices with Medallion Architecture on Google Cloud Platform. Built with NULL-safe transformations, intelligent deduplication, and comprehensive CI/CD pipeline.",
+      role: "Data Engineer",
+      dates: "2024",
+      metrics: [
+        { label: "Records Processed", value: "116,294" },
+        { label: "Data Deduplication", value: "58%" },
+        { label: "Test Coverage", value: "18/19" },
+        { label: "Pipeline Speed", value: "8 seconds" }
+      ],
+      stack: ["GCP", "BigQuery", "dbt Core", "GitHub Actions", "Workload Identity", "Mermaid", "Python"],
+      slug: "ecommerce-warehouse",
+      caseStudyHref: "/projects/ecommerce-warehouse",
+      codeHref: "https://github.com/DrakeDamon/E-commerce-warehouse"
+    },
+    {
       title: "Earthquakes Lakehouse (Azure)",
       summary: "ADF → ADLS Gen2 → Databricks Delta (Bronze/Silver/Gold) with dbt marts (eq_daily_metrics, eq_top100) and Azure Monitor alerts.",
       role: "Data Engineer",
