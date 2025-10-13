@@ -1,0 +1,176 @@
+---
+title: "Real-Time Offers Engine — Kafka → Spark → S3 → SQS/Lambda"
+slug: "realtime-offers-engine"
+date: "2025-10-13"
+summary: "Built a sub-minute streaming pipeline that enriches card transactions and triggers SMS-style offers; PII-safe data lake in S3."
+tags: ["data engineering", "streaming", "aws", "kafka", "spark", "s3", "lambda", "sqs"]
+role: "Data Engineer"
+readingTime: 6
+cover: "../diagrams/architecture.mmd" # render mermaid if your site supports it; else swap for a PNG
+---
+
+> **TL;DR** — I designed and implemented a **real-time offers pipeline** for a banking scenario.  
+> Events flow **Kafka (Confluent)** → **Spark Structured Streaming** → **S3 (Parquet, partitioned by date)** with a side branch to **SQS → Lambda** for notifications.  
+> End-to-end latency is **~30–60 seconds**, and the lake stores **hashed phones** (raw PII only lives in the transient notify path).
+
+---
+
+## Problem & Objective
+
+Marketing wants to send **relevant offers within seconds** of a customer's transaction (e.g., 10% off groceries).  
+The system must be **reliable, low-cost, and privacy-aware**:
+
+- Ingest transactions continuously.
+- Enrich with offer rules and eligibility.
+- Persist a queryable history (columnar + partitioned).
+- Fan-out eligible events to a notifier (SMS simulator).
+- **PII minimization:** only hashed phone numbers persisted to the lake.
+
+**Scope:** 2-day build; keep cloud spend near-zero (free tiers/credits).
+
+---
+
+## Stack
+
+- **Ingestion:** Confluent Cloud **Kafka** (`txns`)
+- **Processing:** **Spark Structured Streaming** (PySpark, local)  
+- **Storage:** **Amazon S3** (`s3://offers-demo-drake-20251011/enriched/parquet/dt=YYYY-MM-DD/`, Parquet)
+- **Notify:** **Amazon SQS** (`to-notify`) → **AWS Lambda** (`notify-sms`) → CloudWatch Logs
+- **Schemas/Docs:** JSON Schema + Mermaid diagrams
+- **Local analytics (free):** Spark / DuckDB on Parquet (no Athena required)
+
+---
+
+## Architecture (at a glance)
+
+```mermaid
+flowchart LR
+  subgraph Confluent_Cloud[Confluent Cloud]
+    K[Kafka Topic: txns]
+  end
+  P[Python Producer]
+  SP[Spark Streaming]
+  O[(S3 offers/static)]
+  S3[(S3 enriched/parquet<br/>dt=YYYY-MM-DD)]
+  Q((SQS to-notify))
+  L[Lambda notify-sms]
+  CW[CloudWatch Logs]
+
+  P -->|JSON| K
+  K -->|SASL_SSL| SP
+  O -->|Broadcast join| SP
+  SP -->|Parquet (PII-safe)| S3
+  SP -->|Eligible JSON| Q
+  Q --> L
+  L -->|DELIVERED_SIMULATED| CW
+```
+
+> **Privacy by design:** The persisted "silver" table uses **`customer_phone_hash`**.  
+> Raw phone appears **only** in the SQS payload consumed by Lambda; it is not written to S3.
+
+---
+
+## How it works (60 seconds)
+
+1. **Producer** sends JSON transactions to Kafka (`txns`).
+2. **Spark** reads the stream, parses JSON, and **joins** a reference **offers** CSV in S3.
+3. Apply **eligibility** (amount threshold, category allow-list, date window).
+4. Write **Parquet** to S3, **partitioned by `dt`** for efficient, low-cost queries.
+5. In parallel, Spark sends **eligible** events to **SQS** (keeps raw phone).
+6. **Lambda** triggers from SQS and logs `"DELIVERED_SIMULATED"` to CloudWatch.
+
+---
+
+## Data model (silver table in S3)
+
+- **Partition:** `dt=YYYY-MM-DD`
+- **Columns:**  
+  `event_id, event_time, cust_id, customer_phone_hash, vendor_id, vendor_category, amount, currency, offer_id, eligible, cooldown_hours, discount_type, discount_value, message_template_id`
+
+**Reference data (offers CSV)**  
+`offer_id,vendor_id,min_amount,allowed_categories,start_ts,end_ts,cooldown_hours,discount_type,discount_value,message_template_id,priority`
+
+**Notify message (SQS JSON)**  
+`notify_id,cust_id,phone,offer_id,message_template_id,vendor_id,amount,currency,ttl_ts`
+
+---
+
+## Implementation highlights
+
+- **Structured Streaming** with **checkpointing** for resilient writes.
+- **Broadcast join** of the small offers table from S3 for speed.
+- **PII minimization:** SHA-256 phone hashing for the lake; raw phone only in SQS/Lambda.
+- **Partitioning** by `dt` to keep query cost small and lifecycle cleanup simple.
+- **Idempotent notify path** via SQS/Lambda (at-least-once; messages batched in 10s).
+
+---
+
+## Results
+
+- **Latency:** ~30–60s from Kafka → SQS → Lambda log
+- **Throughput (demo):** 19+ transactions processed in seconds
+- **Notify path:** SQS drained from ~16 → 0 after Lambda consumed
+- **Observability:** CloudWatch shows structured `DELIVERED_SIMULATED` logs with `notify_id`, `phone`, `offer_id`, amounts
+- **Cost:** Kept near-zero (no Athena scans; Parquet + partitions; lifecycle rules)
+
+---
+
+## Screenshots (evidence)
+
+![Confluent `txns` messages](../screenshots/confluent-txns-messages.png "Confluent topic with live JSON events and message-rate bump.")
+
+![Spark stream start](../screenshots/spark-streaming-start.png "Spark stream writing Parquet to S3 with checkpointing.")
+
+![S3 partition](../screenshots/s3-enriched-dt-listing.png "S3 `enriched/parquet/dt=…` with Parquet object details.")
+
+![SQS monitoring](../screenshots/sqs-to-notify-monitoring.png "SQS `to-notify` activity during Lambda consumption.")
+
+![Lambda delivered logs](../screenshots/lambda-logs-delivered.png "CloudWatch log lines with status `DELIVERED_SIMULATED`.") 
+
+*(Optional)* ![IAM role policy](../screenshots/iam-role-sqs-policy.png "Lambda role with SQS queue permissions attached.")
+
+---
+
+## Key decisions & trade-offs
+
+- **Athena omitted** to avoid per-scan cost. Local Spark/DuckDB queries over Parquet provide the same value for a demo portfolio.
+- **Hash-only phones in the lake** to reduce risk while still enabling dedupe/joins when needed.
+- **ForeachBatch to SQS** keeps the main sink (S3) simple and isolates PII to a transient path.
+
+---
+
+## Lessons learned
+
+- Confluent + Structured Streaming is a fast way to stand up **real-time** ingestion with strong semantics.
+- **Partitioning + Parquet** is the right default for lake storage; easy to query locally and cheap to keep.
+- Keeping PII out of the lake by default simplifies governance and sharing.
+
+---
+
+## What I'd build next
+
+- **Cooling window** (suppress repeats) via DynamoDB gate in Lambda or stateful Spark.
+- **Schema governance** using Schema Registry for the Kafka topic and Glue Catalog for the lake.
+- **CI/CD**: package Lambda, static checks, a tiny end-to-end smoke with a containerized Spark job.
+- **Airflow/Step Functions** to orchestrate replay/backfills.
+
+---
+
+## How to reproduce (quick)
+
+```bash
+# 1) Produce transactions
+python produce_jsonl.py data/transactions_sample.jsonl
+
+# 2) Run the streaming job (S3 + SQS branch)
+export SQS_QUEUE_URL="https://sqs.us-east-1.amazonaws.com/607709788146/to-notify"
+python spark/spark_enrich_to_s3.py
+
+# 3) Inspect Parquet locally (no Athena)
+python - <<'PY'
+from pyspark.sql import SparkSession
+spark = SparkSession.builder.getOrCreate()
+df = spark.read.parquet("s3a://offers-demo-drake-20251011/enriched/parquet/")
+df.where("dt = '2025-10-11'").groupBy("vendor_id","eligible").count().show()
+PY
+```

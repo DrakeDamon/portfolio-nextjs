@@ -7,6 +7,22 @@ import Metric from '@/components/ui/metric'
 export default function ProjectsPage() {
   const projects = [
     {
+      title: "Real-Time Offers Engine — Kafka → Spark → S3 → SQS/Lambda",
+      summary: "Built a sub-minute streaming pipeline that enriches card transactions and triggers SMS-style offers; PII-safe data lake in S3. End-to-end latency of 30-60 seconds with fault-tolerant architecture and exactly-once processing guarantees.",
+      role: "Data Engineer",
+      dates: "2024",
+      metrics: [
+        { label: "End-to-End Latency", value: "30-60s" },
+        { label: "Processing Speed", value: "10K+/min" },
+        { label: "System Uptime", value: "99.9%" },
+        { label: "Monthly Cost", value: "~$50" }
+      ],
+      stack: ["Apache Spark", "Confluent Kafka", "AWS S3", "AWS Lambda", "AWS SQS", "Python", "Real-time Streaming"],
+      slug: "realtime-offers-engine",
+      caseStudyHref: "/projects/realtime-offers-engine",
+      codeHref: "https://github.com/DrakeDamon/kafka-spark-streaming-pipeline-"
+    },
+    {
       title: "E-commerce Data Warehouse",
       summary: "Production-ready cloud-native data warehouse showcasing modern data engineering practices with Medallion Architecture on Google Cloud Platform. Built with NULL-safe transformations, intelligent deduplication, and comprehensive CI/CD pipeline.",
       role: "Data Engineer",

@@ -21,6 +21,72 @@ export interface CaseStudy {
 
 export const allCaseStudies: CaseStudy[] = [
   {
+    title: "Real-Time Offers Engine — Kafka → Spark → S3 → SQS/Lambda",
+    slug: "realtime-offers-engine",
+    summary: "Built a sub-minute streaming pipeline that enriches card transactions and triggers SMS-style offers; PII-safe data lake in S3.",
+    role: "Data Engineer",
+    dates: "2024",
+    stack: ["Apache Spark", "Confluent Kafka", "AWS S3", "AWS Lambda", "AWS SQS", "Python", "Real-time Streaming"],
+    metrics: [
+      {
+        label: "End-to-End Latency",
+        value: "30-60s",
+        description: "Transaction to notification"
+      },
+      {
+        label: "Processing Speed",
+        value: "10K+/min",
+        description: "Transactions per minute"
+      },
+      {
+        label: "System Uptime",
+        value: "99.9%",
+        description: "Fault-tolerant architecture"
+      },
+      {
+        label: "Monthly Cost",
+        value: "~$50",
+        description: "Demo workload operational cost"
+      }
+    ],
+    links: {
+      repo: "https://github.com/DrakeDamon/kafka-spark-streaming-pipeline-"
+    },
+    content: `
+<h2 id="problem">Problem</h2>
+<p>Marketing teams need to send relevant offers within seconds of customer transactions (e.g., 10% off groceries). The system must be reliable, low-cost, and privacy-aware with PII minimization.</p>
+
+<h2 id="architecture">Architecture</h2>
+<p>Built a production-ready streaming architecture:</p>
+<pre><code>Kafka (Confluent) → Spark Structured Streaming → S3 (Parquet, partitioned by date) + SQS → Lambda for notifications</code></pre>
+
+<h3>Key Features</h3>
+<ul>
+<li><strong>Real-time Processing</strong>: 30-60 second end-to-end latency</li>
+<li><strong>PII Protection</strong>: Hashed phone numbers in data lake, raw only in notification path</li>
+<li><strong>Fault Tolerance</strong>: Spark checkpointing for exactly-once processing</li>
+<li><strong>Dual-Sink Pattern</strong>: Parallel writes to analytics (S3) and notifications (SQS)</li>
+</ul>
+
+<h2 id="implementation">Implementation</h2>
+<ul>
+<li><strong>Broadcast Joins</strong>: Efficient offer matching using broadcast variables</li>
+<li><strong>Partitioned Storage</strong>: Date-based partitioning for optimal query performance</li>
+<li><strong>Privacy by Design</strong>: SHA-256 phone hashing for lake storage</li>
+<li><strong>Serverless Notifications</strong>: SQS + Lambda for scalable SMS delivery</li>
+</ul>
+
+<h2 id="results-impact">Results & Impact</h2>
+<ul>
+<li><strong>High Throughput</strong>: 10K+ transactions per minute processing capability</li>
+<li><strong>Low Latency</strong>: P95 < 60 seconds for real-time offer delivery</li>
+<li><strong>Cost Efficient</strong>: ~$50/month operational costs with serverless architecture</li>
+<li><strong>Production Ready</strong>: Comprehensive error handling and monitoring</li>
+</ul>
+    `,
+    published: true
+  },
+  {
     title: "E-commerce Data Warehouse",
     slug: "ecommerce-warehouse",
     summary: "Production-ready cloud-native data warehouse showcasing modern data engineering practices with Medallion Architecture on Google Cloud Platform.",
