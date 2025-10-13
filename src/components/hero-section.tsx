@@ -58,6 +58,9 @@ export function HeroSection() {
             <Button href="/projects" className="text-lg px-8 py-3">
               View Projects →
             </Button>
+            <Button href="/resume.pdf" className="bg-neutral-800 text-neutral-300 hover:bg-neutral-700 text-lg px-8 py-3">
+              📄 Download Resume
+            </Button>
             <Button href="https://www.linkedin.com/in/drakedamon/" className="bg-neutral-800 text-neutral-300 hover:bg-neutral-700 text-lg px-8 py-3">
               LinkedIn
             </Button>

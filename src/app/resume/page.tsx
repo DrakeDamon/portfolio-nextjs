@@ -10,7 +10,9 @@ export default function ResumePage() {
         <p className="text-xl text-neutral-300 max-w-3xl mx-auto mb-8">
           Data Engineer delivering production-grade lakehouses and analytics platforms across cloud environments.
         </p>
-        <Button href="/resume.pdf" className="mb-8">Download Resume (PDF)</Button>
+        <Button href="/resume.pdf" className="mb-8 text-lg px-8 py-3">
+          📄 Download Resume (PDF)
+        </Button>
       </div>
       
       <Card className="max-w-4xl mx-auto">

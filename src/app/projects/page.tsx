@@ -186,7 +186,7 @@ export default function ProjectsPage() {
               {Boolean((project as any).codeHref) && (
                 <Button href={`${(project as any).codeHref}/stargazers`} className="bg-neutral-800 text-neutral-300 hover:bg-neutral-700">⭐ Star Repo</Button>
               )}
-              <Button href={(project as any).demoHref ?? "/resume"} className="bg-neutral-800 text-neutral-300 hover:bg-neutral-700">Resume (PDF)</Button>
+              <Button href="/resume.pdf" className="bg-neutral-800 text-neutral-300 hover:bg-neutral-700">📄 Resume (PDF)</Button>
             </div>
           </Card>
         ))}
