@@ -5,6 +5,7 @@ export interface CaseStudy {
   role: string
   dates: string
   stack: string[]
+  category: string
   metrics: Array<{
     label: string
     value: string
@@ -26,6 +27,7 @@ export const allCaseStudies: CaseStudy[] = [
     summary: "Built a sub-minute streaming pipeline that enriches card transactions and triggers SMS-style offers; PII-safe data lake in S3.",
     role: "Data Engineer",
     dates: "2024",
+    category: "Real-time Streaming",
     stack: ["Apache Spark", "Confluent Kafka", "AWS S3", "AWS Lambda", "AWS SQS", "Python", "Real-time Streaming"],
     metrics: [
       {
@@ -92,6 +94,7 @@ export const allCaseStudies: CaseStudy[] = [
     summary: "Production-ready cloud-native data warehouse showcasing modern data engineering practices with Medallion Architecture on Google Cloud Platform.",
     role: "Data Engineer",
     dates: "2024",
+    category: "Data Warehouses",
     stack: ["GCP", "BigQuery", "dbt Core", "GitHub Actions", "Workload Identity", "Mermaid", "Python"],
     metrics: [
       {
@@ -169,6 +172,7 @@ export const allCaseStudies: CaseStudy[] = [
     summary: "ADF → ADLS Gen2 → Databricks Delta (Bronze/Silver/Gold) with dbt marts and Azure Monitor alerts.",
     role: "Data Engineer",
     dates: "2024",
+    category: "Lakehouses",
     stack: ["Azure", "ADF", "ADLS Gen2", "Databricks/Delta", "dbt", "GitHub Actions", "Azure Monitor"],
     metrics: [
       { label: "ADF Schedule", value: "18:00", description: "Daily refresh time" },
@@ -210,6 +214,7 @@ export const allCaseStudies: CaseStudy[] = [
     summary: "ADF Copy to ADLS, Databricks Bronze/Silver, and dbt Gold fact fct_taxi_daily with email alerts and CI integration.",
     role: "Data Engineer",
     dates: "2024",
+    category: "Lakehouses",
     stack: ["Azure", "ADF", "ADLS Gen2", "Databricks/Delta", "dbt", "GitHub Actions"],
     metrics: [
       { label: "ADF Schedule", value: "06:00", description: "Daily trigger" },
@@ -248,6 +253,7 @@ export const allCaseStudies: CaseStudy[] = [
     summary: "Production-style lakehouse architecture processing SEC financial data with BigQuery, dbt, and automated data quality validation.",
     role: "Data Engineer",
     dates: "2024",
+    category: "Data Warehouses",
     stack: ["GCP", "BigQuery", "dbt", "Great Expectations", "GitHub Actions", "Looker Studio", "Python"],
     metrics: [
       {
@@ -323,6 +329,7 @@ export const allCaseStudies: CaseStudy[] = [
     summary: "Serverless cryptocurrency data pipeline using Cloud Run Jobs, BigQuery, and Terraform with automated cost optimization.", 
     role: "Data Engineer",
     dates: "2024",
+    category: "ETL Pipelines",
     stack: ["Python", "Docker", "Cloud Run Jobs", "Cloud Scheduler", "BigQuery", "GCS", "Secret Manager", "dbt", "Terraform", "Great Expectations"],
     metrics: [
       {
@@ -375,6 +382,7 @@ export const allCaseStudies: CaseStudy[] = [
     summary: "Machine learning model deployment on Databricks with Python SQL UDFs for real-time NFL draft predictions.",
     role: "ML Engineer / Data Engineer", 
     dates: "2024",
+    category: "ML/AI",
     stack: ["Databricks", "PySpark", "SQL Warehouse", "Unity Catalog", "Python", "XGBoost", "MLflow", "Node.js", "Express", "Next.js"],
     metrics: [
       {

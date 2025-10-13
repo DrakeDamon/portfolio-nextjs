@@ -1,13 +1,42 @@
+"use client"
+
 import CTAGroup from "@/components/CTAGroup";
 import StatsBar from "@/components/StatsBar";
-import ProjectSpotlight from "@/components/ProjectSpotlight";
-import ProjectMiniCard from "@/components/ProjectMiniCard";
+import ProjectCategoryFilter, { ProjectCategory } from "@/components/ProjectCategoryFilter";
+import FilteredProjectGrid from "@/components/FilteredProjectGrid";
 import Card from "@/components/ui/card";
 import Chip from "@/components/ui/chip";
 import Button from "@/components/ui/button";
+import { allCaseStudies } from "@/data/case-studies";
+import { useState, useMemo } from "react";
 
 export default function Page() {
   const heroChips = ["Azure", "ADF", "Databricks/Delta", "dbt", "GitHub Actions"];
+  const [activeCategory, setActiveCategory] = useState('all');
+
+  const categories = useMemo(() => {
+    const categoryMap = new Map<string, number>();
+    const categoryDescriptions = {
+      'Real-time Streaming': 'Real-time data processing with sub-minute latency',
+      'Data Warehouses': 'Cloud-native data warehouses with medallion architecture',
+      'Lakehouses': 'Azure-based data lakehouses with Bronze/Silver/Gold layers',
+      'ML/AI': 'Machine learning model deployment and serving',
+      'ETL Pipelines': 'Extract, Transform, Load pipelines with automation'
+    };
+
+    allCaseStudies.forEach(project => {
+      if (project.published) {
+        categoryMap.set(project.category, (categoryMap.get(project.category) || 0) + 1);
+      }
+    });
+
+    return Array.from(categoryMap.entries()).map(([id, count]) => ({
+      id,
+      label: id,
+      description: categoryDescriptions[id as keyof typeof categoryDescriptions] || '',
+      count
+    }));
+  }, []);
 
   return (
     <div className="container mx-auto px-4 md:px-6">
@@ -59,39 +88,15 @@ export default function Page() {
           </div>
         </Card>
 
-        {/* FEATURED PROJECTS */}
-        <div className="space-y-6">
-          <h2 className="text-xl font-semibold text-emerald-400">Featured Projects</h2>
-
-          {/* Spotlight (largest) - E-commerce Data Warehouse */}
-          <ProjectSpotlight
-            title="E-commerce Data Warehouse"
-            subtitle="Production-ready cloud-native data warehouse with Medallion Architecture processing 116K+ records with 58% intelligent deduplication and comprehensive CI/CD pipeline."
-            tags={["GCP", "BigQuery", "dbt Core", "GitHub Actions", "Workload Identity"]}
-            caseStudyHref="/projects/ecommerce-warehouse"
-            repoHref="https://github.com/DrakeDamon/E-commerce-warehouse"
+        {/* PROJECT CATEGORIES & FILTERING */}
+        <div className="space-y-8">
+          <ProjectCategoryFilter
+            categories={categories}
+            activeCategory={activeCategory}
+            onCategoryChange={setActiveCategory}
           />
-
-          {/* Secondary cards */}
-          <div className="grid md:grid-cols-2 gap-6">
-            <ProjectMiniCard
-              title="Earthquakes Lakehouse (Azure)"
-              blurb="ADF → ADLS Gen2 → Databricks Delta (B/S/G) with dbt Gold marts and Azure Monitor alerts."
-              tags={["Azure", "ADF", "ADLS Gen2", "Databricks/Delta", "dbt"]}
-              href="/projects/earthquakes-lakehouse"
-            />
-            <ProjectMiniCard
-              title="Recruit Reveal — ML Model Serving"
-              blurb="Low-latency XGBoost model serving on Databricks with MLflow tracking and Next.js frontend."
-              tags={["Databricks", "XGBoost", "MLflow", "Next.js"]}
-              href="/projects/recruit-reveal"
-            />
-          </div>
-
-          {/* All Projects CTA */}
-          <div className="flex justify-center">
-            <Button href="/projects">View All Projects</Button>
-          </div>
+          
+          <FilteredProjectGrid activeCategory={activeCategory} />
         </div>
       </section>
     </div>

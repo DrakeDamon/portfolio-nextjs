@@ -3,9 +3,24 @@ import Badge from '@/components/ui/badge'
 import Button from '@/components/ui/button'
 import Chip from '@/components/ui/chip'
 import Metric from '@/components/ui/metric'
+import { allCaseStudies } from '@/data/case-studies'
 
 export default function ProjectsPage() {
-  const projects = [
+  const projects = allCaseStudies.filter(project => project.published).map(project => ({
+    title: project.title,
+    summary: project.summary,
+    role: project.role,
+    dates: project.dates,
+    category: project.category,
+    metrics: project.metrics,
+    stack: project.stack,
+    slug: project.slug,
+    caseStudyHref: `/projects/${project.slug}`,
+    codeHref: project.links?.repo
+  }));
+
+  // Legacy projects array (keeping for reference)
+  const legacyProjects = [
     {
       title: "Real-Time Offers Engine — Kafka → Spark → S3 → SQS/Lambda",
       summary: "Built a sub-minute streaming pipeline that enriches card transactions and triggers SMS-style offers; PII-safe data lake in S3. End-to-end latency of 30-60 seconds with fault-tolerant architecture and exactly-once processing guarantees.",
@@ -127,6 +142,11 @@ export default function ProjectsPage() {
         {projects.map((project, index) => (
           <Card key={project.slug}>
             <div className="mb-6">
+              <div className="flex items-center gap-3 mb-2">
+                <Badge className="bg-emerald-500/20 text-emerald-400 border-emerald-500/30">
+                  {project.category}
+                </Badge>
+              </div>
               <h2 className="text-3xl font-bold mb-2 text-emerald-400">{project.title}</h2>
               <div className="flex items-center gap-4 text-sm text-neutral-400">
                 <span>{project.role}</span>
