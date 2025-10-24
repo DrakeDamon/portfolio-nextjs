@@ -22,6 +22,143 @@ export interface CaseStudy {
 
 export const allCaseStudies: CaseStudy[] = [
   {
+    title: "Tampa Rent Signals Data Pipeline",
+    slug: "tampa-rent-signals",
+    summary: "Production-ready data engineering pipeline integrating Zillow, ApartmentList, and FRED data with dbt Core, Great Expectations, and Dagster orchestration on Snowflake.",
+    role: "Data Engineer",
+    dates: "2024",
+    category: "Data Warehouses",
+    stack: ["Snowflake", "dbt Core", "Dagster", "Great Expectations", "FastAPI", "Python", "AWS S3", "Docker", "Render"],
+    metrics: [
+      {
+        label: "Orchestration",
+        value: "15 Assets",
+        description: "Dagster software-defined assets"
+      },
+      {
+        label: "Data Quality",
+        value: "100%",
+        description: "Great Expectations test coverage"
+      },
+      {
+        label: "Historical Tracking",
+        value: "SCD Type 2",
+        description: "Snowflake star schema with snapshots"
+      },
+      {
+        label: "API Endpoints",
+        value: "9 Endpoints",
+        description: "FastAPI production deployment"
+      }
+    ],
+    links: {
+      repo: "https://github.com/DrakeDamon/rental_signals",
+      demo: "https://rental-signals.onrender.com"
+    },
+    content: `
+<h2 id="problem">Problem</h2>
+<p>Rental market data is fragmented across multiple sources (Zillow, ApartmentList, FRED), making it difficult to analyze trends, compare markets, and correlate economic indicators. Investors and analysts need a unified, production-grade data platform with historical tracking, data quality guarantees, and API access for real-time insights.</p>
+
+<h2 id="constraints">Constraints</h2>
+<ul>
+<li>Multiple data sources with varying schemas and formats (wide vs long format)</li>
+<li>Need for historical tracking with slowly changing dimensions (SCD Type 2)</li>
+<li>Comprehensive data quality validation across Bronze, Silver, and Gold layers</li>
+<li>Production-grade orchestration with monitoring and alerting</li>
+<li>RESTful API deployment for external consumption</li>
+<li>Cost-effective cloud data warehouse solution</li>
+</ul>
+
+<h2 id="architecture">Architecture</h2>
+<p>Built a modern data platform implementing Bronze → Silver → Gold medallion architecture with Snowflake:</p>
+<pre><code>AWS S3 (Raw CSV) → Snowflake Bronze → dbt Silver (Star Schema) → dbt Gold (Business Marts) → FastAPI (Render)</code></pre>
+
+<h3>Data Flow</h3>
+<ol>
+<li><strong>Bronze Layer</strong>: Raw CSV ingestion from S3 (Zillow ZORI, ApartmentList, FRED CPI)</li>
+<li><strong>Silver Layer</strong>: dbt-managed star schema with SCD Type 2 dimensions and fact tables</li>
+<li><strong>Gold Layer</strong>: Business-ready mart models with pre-calculated analytics</li>
+<li><strong>Orchestration</strong>: Dagster software-defined assets with Great Expectations validation</li>
+<li><strong>API Layer</strong>: FastAPI deployment on Render with 9 production endpoints</li>
+</ol>
+
+<h3>Star Schema Design</h3>
+<ul>
+<li><strong>Dimensions</strong>: DIM_LOCATION (SCD Type 2), DIM_TIME, DIM_ECONOMIC_SERIES, DIM_DATA_SOURCE</li>
+<li><strong>Facts</strong>: FACT_RENT_ZORI, FACT_RENT_APTLIST, FACT_ECONOMIC_INDICATOR</li>
+<li><strong>Marts</strong>: mart_rent_trends, mart_market_rankings, mart_economic_correlation, mart_regional_summary</li>
+</ul>
+
+<h2 id="implementation">Implementation</h2>
+
+<h3>Modern Data Stack</h3>
+<ul>
+<li><strong>dbt Core</strong>: 15+ models with staging, core, and mart layers; incremental processing for large datasets</li>
+<li><strong>Dagster</strong>: 15 software-defined assets with automated scheduling, asset checks, and monitoring</li>
+<li><strong>Great Expectations</strong>: 100+ validation rules with layer-specific quality gates</li>
+<li><strong>Snowflake</strong>: Cloud data warehouse with clustering and partitioning optimization</li>
+<li><strong>FastAPI</strong>: Production API with 9 endpoints for market data, trends, rankings, and analytics</li>
+</ul>
+
+<h3>Data Quality Framework</h3>
+<ul>
+<li><strong>Bronze Validation</strong>: Schema validation, null checks, data type verification</li>
+<li><strong>Silver Validation</strong>: Business rule enforcement, referential integrity, SCD Type 2 consistency</li>
+<li><strong>Gold Validation</strong>: Metric accuracy, trend validation, cross-source consistency</li>
+<li><strong>Operational Monitoring</strong>: Data freshness checks, pipeline health, quality score tracking</li>
+</ul>
+
+<h3>SCD Type 2 Implementation</h3>
+<ul>
+<li><strong>dbt Snapshots</strong>: Automated historical tracking for changing dimensions</li>
+<li><strong>Effective Dating</strong>: EFFECTIVE_DATE, END_DATE, IS_CURRENT flags for time-travel queries</li>
+<li><strong>Surrogate Keys</strong>: Immutable keys for fact table relationships</li>
+</ul>
+
+<h2 id="results-impact">Results & Impact</h2>
+
+<h3>Orchestration Excellence</h3>
+<ul>
+<li><strong>15 Software-Defined Assets</strong>: Complete pipeline managed via Dagster with dependency tracking</li>
+<li><strong>Automated Scheduling</strong>: Daily and weekly execution with smart re-computation</li>
+<li><strong>Asset Checks</strong>: 12 comprehensive validation checks integrating Great Expectations</li>
+<li><strong>Monitoring Dashboard</strong>: Built-in observability via Dagster UI with alerting</li>
+</ul>
+
+<h3>Data Quality Achievement</h3>
+<ul>
+<li><strong>100% Test Coverage</strong>: 100+ Great Expectations validations across all layers</li>
+<li><strong>Zero Data Loss</strong>: Complete audit trail with data lineage tracking</li>
+<li><strong>Business Rule Enforcement</strong>: Automated validation of rent growth limits and CPI ranges</li>
+<li><strong>Cross-Source Consistency</strong>: Unified metrics across Zillow, ApartmentList, and FRED</li>
+</ul>
+
+<h3>Historical Tracking</h3>
+<ul>
+<li><strong>SCD Type 2 Implementation</strong>: Full historical tracking using dbt snapshots</li>
+<li><strong>Time-Travel Queries</strong>: Point-in-time analysis with effective dating</li>
+<li><strong>Dimension Evolution</strong>: Track changes in location attributes and economic series</li>
+</ul>
+
+<h3>API Deployment</h3>
+<ul>
+<li><strong>9 Production Endpoints</strong>: Market data, trends, comparisons, price drops, rankings, analytics</li>
+<li><strong>Live Deployment</strong>: Hosted on Render with auto-deploy from GitHub</li>
+<li><strong>Interactive Documentation</strong>: Swagger UI and ReDoc for API exploration</li>
+<li><strong>Production-Ready</strong>: Error handling, input validation, pagination, health monitoring</li>
+</ul>
+
+<h3>Technical Excellence</h3>
+<ul>
+<li><strong>Medallion Architecture</strong>: Industry-standard Bronze → Silver → Gold pattern</li>
+<li><strong>Modern Stack</strong>: dbt Core + Dagster + Great Expectations + FastAPI</li>
+<li><strong>Infrastructure as Code</strong>: AWS infrastructure with IAM policies and S3 automation</li>
+<li><strong>Comprehensive Documentation</strong>: dbt docs, Dagster lineage, API documentation</li>
+</ul>
+    `,
+    published: true
+  },
+  {
     title: "Real-Time Offers Engine — Kafka → Spark → S3 → SQS/Lambda",
     slug: "realtime-offers-engine",
     summary: "Built a sub-minute streaming pipeline that enriches card transactions and triggers SMS-style offers; PII-safe data lake in S3.",
