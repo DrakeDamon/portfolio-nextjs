@@ -71,6 +71,26 @@ export default function ResumePage() {
             <h3 className="text-2xl font-semibold mb-4 text-emerald-400">Selected Projects</h3>
             <div className="space-y-6">
               <div>
+                <h4 className="text-lg font-semibold text-emerald-400 mb-2">Tampa Rent Signals Data Pipeline — <span className="text-neutral-400 font-normal">Snowflake + dbt + Dagster + FastAPI (Production Ready)</span></h4>
+                <ul className="text-neutral-300 space-y-1 text-sm">
+                  <li>• Built production data warehouse with <strong>Bronze → Silver → Gold</strong> medallion architecture processing Zillow, ApartmentList, and FRED data</li>
+                  <li>• Orchestrated <strong>15 software-defined assets</strong> via Dagster with automated scheduling, asset checks, and monitoring</li>
+                  <li>• Implemented <strong>SCD Type 2</strong> historical tracking using dbt snapshots; <strong>100+ Great Expectations validations</strong> with 100% test coverage</li>
+                  <li>• Deployed <strong>9 FastAPI endpoints</strong> on Render with Snowflake integration for rental market analytics and price tracking</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-emerald-400 mb-2">Real-Time Offer Notification System — <span className="text-neutral-400 font-normal">Kafka + Spark Streaming + AWS (Production Ready)</span></h4>
+                <ul className="text-neutral-300 space-y-1 text-sm">
+                  <li>• Built production streaming pipeline processing <strong>10K+ transactions/minute</strong> with <strong>P95 &lt; 60 seconds</strong> end-to-end latency</li>
+                  <li>• Implemented dual-sink pattern: S3 data lake (PII-hashed) + SQS notifications with <strong>exactly-once processing</strong></li>
+                  <li>• Deployed on AWS with Lambda SMS delivery, Athena analytics, and <strong>99.9% uptime</strong> with fault tolerance</li>
+                  <li>• Designed secure architecture with <strong>PII protection</strong>, SASL_SSL encryption, and comprehensive monitoring</li>
+                </ul>
+              </div>
+
+              <div>
                 <h4 className="text-lg font-semibold text-emerald-400 mb-2">E-commerce Data Warehouse — <span className="text-neutral-400 font-normal">GCP + BigQuery + dbt + GitHub Actions (Production Ready)</span></h4>
                 <ul className="text-neutral-300 space-y-1 text-sm">
                   <li>• Built cloud-native medallion architecture processing <strong>116K+ records</strong> with <strong>58% intelligent deduplication</strong></li>
@@ -90,6 +110,23 @@ export default function ResumePage() {
               </div>
 
               <div>
+                <h4 className="text-lg font-semibold text-emerald-400 mb-2">Taxi Lakehouse — <span className="text-neutral-400 font-normal">ADF → ADLS Gen2 → Databricks (Delta) + dbt</span></h4>
+                <ul className="text-neutral-300 space-y-1 text-sm">
+                  <li>• Automated CSV ingestion to ADLS; Bronze → Silver transformation in Databricks; dbt marts for daily metrics</li>
+                  <li>• Daily 06:00 trigger, email alerts, validation toggles; optional ARM deployment</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-emerald-400 mb-2">Recruit Reveal — <span className="text-neutral-400 font-normal">Low-Latency Model Serving on Databricks</span></h4>
+                <ul className="text-neutral-300 space-y-1 text-sm">
+                  <li>• Feature pipelines (z-scores, encodings, missing-value flags)</li>
+                  <li>• XGBoost models tracked in MLflow; deployed as SQL UDFs returning JSON predictions</li>
+                  <li>• Hardened with dtype guards; surfaced through a Next.js evaluation UI</li>
+                </ul>
+              </div>
+
+              <div>
                 <h4 className="text-lg font-semibold text-emerald-400 mb-2">SEC EDGAR Financials Warehouse — <span className="text-neutral-400 font-normal">GCP + BigQuery + dbt + GE (Looker Studio)</span></h4>
                 <ul className="text-neutral-300 space-y-1 text-sm">
                   <li>• Ingested SEC filings into a medallion architecture (sec_raw → sec_curated → sec_viz)</li>
@@ -104,15 +141,7 @@ export default function ResumePage() {
                   <li>• Cloud Run Jobs + Scheduler → GCS → BigQuery partitioned tables</li>
                   <li>• Rolling analytics (7/30/90-day MAs, volatility, golden-cross)</li>
                   <li>• dbt + GE validations; <strong>~$2.36/mo</strong> query spend with bytes-scanned proof</li>
-                </ul>
-              </div>
-
-              <div>
-                <h4 className="text-lg font-semibold text-emerald-400 mb-2">Recruit Reveal — <span className="text-neutral-400 font-normal">Low-Latency Model Serving on Databricks</span></h4>
-                <ul className="text-neutral-300 space-y-1 text-sm">
-                  <li>• Feature pipelines (z-scores, encodings, missing-value flags)</li>
-                  <li>• XGBoost models tracked in MLflow; deployed as SQL UDFs returning JSON predictions</li>
-                  <li>• Hardened with dtype guards; surfaced through a Next.js evaluation UI</li>
+                  <li>• Makefile-driven workflows with AI-assist tests</li>
                 </ul>
               </div>
             </div>
