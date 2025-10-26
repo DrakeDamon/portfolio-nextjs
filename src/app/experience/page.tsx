@@ -4,46 +4,28 @@ import Badge from '@/components/ui/badge'
 
 const experiences = [
   {
-    title: "Data Engineer — Azure Lakehouse (Independent Projects)",
-    company: "Personal Projects",
-    location: "Tampa, FL",
-    dates: "2024 – Present",
-    description: "Built end-to-end Azure lakehouses: ADF → ADLS Gen2 → Databricks Delta (Bronze/Silver/Gold) → dbt marts, with CI/CD and alerting.",
-    achievements: [
-      "USGS Earthquakes: parameterized ADF ingest; daily 18:00 schedule; dbt mart eq_daily_metrics; Azure Monitor alerts",
-      "Taxi Lakehouse: ADF Copy → Databricks Bronze/Silver; dbt fact fct_taxi_daily; failure email alerts",
-      "Operationalized with GitHub Actions, Service Principal auth, and Databricks Secret Scopes",
-      "Implemented dbt tests (not_null/accepted_values) and structured logging runbooks"
-    ],
-    technologies: ["Azure", "ADF", "ADLS Gen2", "Databricks/Delta", "dbt", "GitHub Actions", "Azure Monitor"]
-  },
-  {
     title: "React Engineer (Contract)",
     company: "DevSoft",
     location: "Tampa, FL",
     dates: "Jun 2022 – Present",
-    description: "Built and maintained React apps for users with performance optimizations and REST integrations.",
+    description: "Built React apps with code-splitting, lazy-loading, and REST API integrations.",
     achievements: [
-      "Reduced median load time ~40% via code-splitting and lazy-loading",
-      "Integrated REST APIs with robust error handling and retries",
-      "Improved UX with accessibility and responsive design best practices",
-      "Collaborated with product to scope and deliver features on schedule"
+      "Built React apps with code-splitting, lazy-loading, and REST API integrations",
+      "Reduced median load time by ~40% through performance optimizations"
     ],
-    technologies: ["React", "Next.js", "TypeScript", "REST APIs", "Performance"]
+    technologies: ["React", "Next.js", "TypeScript", "REST APIs", "Performance Optimization"]
   },
   {
     title: "Biology Teacher",
     company: "Freedom High School (HCPS)",
     location: "Tampa, FL",
     dates: "Aug 2023 – Present",
-    description: "Analyzed performance data for 150+ students using visualization and statistical summaries to guide instruction.",
+    description: "Analyzed data for 150+ students, producing visualization/statistical reports.",
     achievements: [
-      "Analyzed academic performance data for 150+ students",
-      "Created visualization and statistical summaries for data-driven instruction",
-      "Collaborated with 8-member teaching team on curriculum development",
-      "Applied data analysis skills to educational outcomes and student success metrics"
+      "Analyzed data for 150+ students, producing visualization/statistical reports",
+      "Informed instruction for an 8-member team using data insights"
     ],
-    technologies: ["Data Analysis", "Statistical Analysis", "Data Visualization", "Educational Technology"]
+    technologies: ["Data Analysis", "Statistical Analysis", "Data Visualization", "Educational Analytics"]
   }
 ];
 
