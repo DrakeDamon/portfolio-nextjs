@@ -1,10 +1,10 @@
 import Card from "@/components/ui/card";
 
 const STATS: { value: string; label: string }[] = [
-  { value: "18/19", label: "dbt Tests" },
-  { value: "80–90%", label: "Cost Reduction" },
-  { value: "116K+", label: "Records Processed" },
-  { value: "8 sec", label: "Pipeline Speed" },
+  { value: "9", label: "Production Projects" },
+  { value: "100+", label: "Data Quality Rules" },
+  { value: "10K+", label: "Events/Min Processed" },
+  { value: "99.9%", label: "System Uptime" },
 ];
 
 export default function StatsBar() {
