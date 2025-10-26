@@ -4,14 +4,28 @@ import Badge from '@/components/ui/badge'
 
 const experiences = [
   {
-    title: "React Engineer (Contract)",
+    title: "Data Engineer",
+    company: "Sono Global Venture",
+    location: "Tampa, FL",
+    dates: "June 2022 – Present",
+    description: "Design and maintain test-driven ELT pipelines across Azure, GCP and AWS using Databricks, dbt, Airflow and Dagster.",
+    achievements: [
+      "Design and maintain test-driven ELT pipelines across Azure, GCP and AWS using Databricks, dbt, Airflow and Dagster",
+      "Build medallion architectures and govern data with Great Expectations",
+      "Develop streaming and batch pipelines that deliver vector-ready datasets for analytics and AI initiatives",
+      "Optimize cost and performance through CI/CD and monitoring frameworks"
+    ],
+    technologies: ["Databricks", "dbt", "Airflow", "Dagster", "Azure", "GCP", "AWS", "Great Expectations", "PySpark", "Delta Lake"]
+  },
+  {
+    title: "Software Engineer (Contract)",
     company: "DevSoft",
     location: "Tampa, FL",
-    dates: "Jun 2022 – Present",
-    description: "Built React apps with code-splitting, lazy-loading, and REST API integrations.",
+    dates: "Jan 2022 – 2024",
+    description: "Developed and optimized React applications with lazy-loading, code splitting and REST API integrations.",
     achievements: [
-      "Built React apps with code-splitting, lazy-loading, and REST API integrations",
-      "Reduced median load time by ~40% through performance optimizations"
+      "Developed and optimized React applications with lazy-loading, code splitting and REST API integrations",
+      "Improved median load time by ~40% through performance optimizations"
     ],
     technologies: ["React", "Next.js", "TypeScript", "REST APIs", "Performance Optimization"]
   },
@@ -20,10 +34,10 @@ const experiences = [
     company: "Freedom High School (HCPS)",
     location: "Tampa, FL",
     dates: "Aug 2023 – Present",
-    description: "Analyzed data for 150+ students, producing visualization/statistical reports.",
+    description: "Analyzed and visualized performance data for 150+ students.",
     achievements: [
-      "Analyzed data for 150+ students, producing visualization/statistical reports",
-      "Informed instruction for an 8-member team using data insights"
+      "Analyzed and visualized performance data for 150+ students",
+      "Led data-driven discussions with a team of eight"
     ],
     technologies: ["Data Analysis", "Statistical Analysis", "Data Visualization", "Educational Analytics"]
   }
