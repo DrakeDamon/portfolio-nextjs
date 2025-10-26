@@ -37,13 +37,13 @@ export const allCaseStudies: CaseStudy[] = [
       },
       {
         label: "Data Quality",
-        value: "100%",
-        description: "Great Expectations test coverage"
+        value: "100+ Rules",
+        description: "Great Expectations validations"
       },
       {
-        label: "Historical Tracking",
-        value: "SCD Type 2",
-        description: "Snowflake star schema with snapshots"
+        label: "Asset Checks",
+        value: "12 Checks",
+        description: "Comprehensive validation pipeline"
       },
       {
         label: "API Endpoints",
@@ -102,10 +102,12 @@ export const allCaseStudies: CaseStudy[] = [
 
 <h3>Data Quality Framework</h3>
 <ul>
+<li><strong>100+ Validation Rules</strong>: Comprehensive business rule validation across all pipeline layers</li>
 <li><strong>Bronze Validation</strong>: Schema validation, null checks, data type verification</li>
 <li><strong>Silver Validation</strong>: Business rule enforcement, referential integrity, SCD Type 2 consistency</li>
 <li><strong>Gold Validation</strong>: Metric accuracy, trend validation, cross-source consistency</li>
 <li><strong>Operational Monitoring</strong>: Data freshness checks, pipeline health, quality score tracking</li>
+<li><strong>Statistical Validation</strong>: Outlier detection, range checking, and data profiling</li>
 </ul>
 
 <h3>SCD Type 2 Implementation</h3>
@@ -127,10 +129,12 @@ export const allCaseStudies: CaseStudy[] = [
 
 <h3>Data Quality Achievement</h3>
 <ul>
-<li><strong>100% Test Coverage</strong>: 100+ Great Expectations validations across all layers</li>
-<li><strong>Zero Data Loss</strong>: Complete audit trail with data lineage tracking</li>
+<li><strong>100+ Validation Rules</strong>: Comprehensive Great Expectations validations across all pipeline layers</li>
+<li><strong>12 Asset Checks</strong>: Dagster asset checks integrating Great Expectations for automated quality gates</li>
+<li><strong>Zero Data Loss</strong>: Complete audit trail with data lineage tracking via mart_data_lineage</li>
 <li><strong>Business Rule Enforcement</strong>: Automated validation of rent growth limits and CPI ranges</li>
 <li><strong>Cross-Source Consistency</strong>: Unified metrics across Zillow, ApartmentList, and FRED</li>
+<li><strong>Statistical Validation</strong>: Outlier detection, range checking, and automated data profiling</li>
 </ul>
 
 <h3>Historical Tracking</h3>
@@ -154,6 +158,161 @@ export const allCaseStudies: CaseStudy[] = [
 <li><strong>Modern Stack</strong>: dbt Core + Dagster + Great Expectations + FastAPI</li>
 <li><strong>Infrastructure as Code</strong>: AWS infrastructure with IAM policies and S3 automation</li>
 <li><strong>Comprehensive Documentation</strong>: dbt docs, Dagster lineage, API documentation</li>
+</ul>
+    `,
+    published: true
+  },
+  {
+    title: "LeaseRadar - Full-Stack Rental Market Platform",
+    slug: "leaseradar-fullstack",
+    summary: "End-to-end full-stack application combining Next.js 14 frontend with FastAPI backend, featuring real-time market analytics, interactive data visualizations, and comprehensive rental market insights powered by Snowflake data warehouse.",
+    role: "Full-Stack Engineer",
+    dates: "2024",
+    category: "ML/AI",
+    stack: ["Next.js 14", "TypeScript", "FastAPI", "Snowflake", "Tailwind CSS", "Zustand", "Recharts", "Radix UI", "Python", "Docker", "Render"],
+    metrics: [
+      {
+        label: "Frontend Components",
+        value: "15+ Components",
+        description: "Reusable React components"
+      },
+      {
+        label: "API Endpoints",
+        value: "9 Endpoints",
+        description: "RESTful API with FastAPI"
+      },
+      {
+        label: "Performance",
+        value: "5min Cache",
+        description: "Smart caching with TTL"
+      },
+      {
+        label: "Accessibility",
+        value: "WCAG AA",
+        description: "Full keyboard navigation"
+      }
+    ],
+    links: {
+      repo: "https://github.com/DrakeDamon/rental_signals",
+      demo: "https://rental-signals.onrender.com"
+    },
+    content: `
+<h2 id="problem">Problem</h2>
+<p>Rental market data is valuable but difficult to access and visualize for end users. Investors, renters, and analysts need an intuitive, responsive web application that combines real-time market data with interactive visualizations, price trend analysis, and comprehensive market insights—all backed by a production data warehouse.</p>
+
+<h2 id="constraints">Constraints</h2>
+<ul>
+<li>Need for modern, responsive UI with mobile-first design</li>
+<li>Real-time data integration from backend API</li>
+<li>Complex state management for filters, watchlists, and user preferences</li>
+<li>Performance optimization with caching and efficient data fetching</li>
+<li>Accessibility requirements (WCAG 2.2 AA compliance)</li>
+<li>Integration with Snowflake data warehouse via FastAPI backend</li>
+</ul>
+
+<h2 id="architecture">Architecture</h2>
+<p>Built a modern full-stack application with clear separation of concerns:</p>
+<pre><code>Next.js 14 (TypeScript) ↔ FastAPI (Python) ↔ Snowflake Data Warehouse ↔ dbt + Dagster Pipeline</code></pre>
+
+<h3>Frontend Architecture</h3>
+<ol>
+<li><strong>Next.js 14 App Router</strong>: Server-side rendering with dynamic routes</li>
+<li><strong>TypeScript</strong>: Type-safe development with strict mode</li>
+<li><strong>Zustand State Management</strong>: Lightweight state with localStorage persistence</li>
+<li><strong>API Client with Caching</strong>: 5-minute TTL cache for optimal performance</li>
+<li><strong>Design System</strong>: Custom design tokens with light/dark theme support</li>
+</ol>
+
+<h3>Backend Architecture</h3>
+<ol>
+<li><strong>FastAPI</strong>: High-performance async API with automatic OpenAPI docs</li>
+<li><strong>Snowflake Integration</strong>: Direct queries to production data warehouse</li>
+<li><strong>Pydantic Models</strong>: Request/response validation with type safety</li>
+<li><strong>Error Handling</strong>: Comprehensive HTTP status codes with structured responses</li>
+<li><strong>Docker Deployment</strong>: Containerized application deployed on Render</li>
+</ol>
+
+<h2 id="implementation">Implementation</h2>
+
+<h3>Frontend Features</h3>
+<ul>
+<li><strong>15+ React Components</strong>: SearchBar, FilterBar, RangeSlider, ResultCard, MarketCard, TrendChart, Map integration</li>
+<li><strong>Responsive Design</strong>: Mobile-first with adaptive layouts (sm/md/lg/xl breakpoints)</li>
+<li><strong>Interactive Charts</strong>: Recharts integration for 30/90-day price trend visualization</li>
+<li><strong>Theme System</strong>: Light/dark/system theme with localStorage persistence</li>
+<li><strong>Accessibility</strong>: WCAG AA compliant with keyboard navigation and ARIA labels</li>
+<li><strong>Loading States</strong>: Skeleton components with shimmer animation</li>
+</ul>
+
+<h3>State Management</h3>
+<ul>
+<li><strong>Zustand Store</strong>: Centralized state for markets, filters, watchlist, and theme</li>
+<li><strong>API Data Caching</strong>: 5-minute TTL cache prevents unnecessary refetches</li>
+<li><strong>localStorage Persistence</strong>: Watchlist and alerts persist across sessions</li>
+<li><strong>Hybrid Data Strategy</strong>: Market-level data from API, property-level from fixtures</li>
+</ul>
+
+<h3>API Integration</h3>
+<ul>
+<li><strong>9 RESTful Endpoints</strong>: Markets list, market details, trends, price drops, featured markets</li>
+<li><strong>Standardized Responses</strong>: Consistent JSON format with metadata and pagination</li>
+<li><strong>Error Handling</strong>: Graceful degradation with user-friendly error messages</li>
+<li><strong>Query Parameters</strong>: Flexible filtering with state, limit, offset, threshold parameters</li>
+</ul>
+
+<h3>Design System</h3>
+<ul>
+<li><strong>Design Tokens</strong>: Colors, typography, spacing, shadows, motion with 4px rhythm</li>
+<li><strong>Tailwind CSS</strong>: Utility-first styling with custom configuration</li>
+<li><strong>Radix UI Primitives</strong>: Accessible component foundations</li>
+<li><strong>Inter Font</strong>: 8 size scales (xs to 4xl) with consistent line heights</li>
+</ul>
+
+<h2 id="results-impact">Results & Impact</h2>
+
+<h3>Frontend Excellence</h3>
+<ul>
+<li><strong>15+ Reusable Components</strong>: Modular architecture with TypeScript type safety</li>
+<li><strong>WCAG AA Compliance</strong>: Full keyboard navigation and screen reader support</li>
+<li><strong>Performance Optimized</strong>: 5-minute cache TTL reduces API calls and improves UX</li>
+<li><strong>Responsive Design</strong>: Mobile-first approach with adaptive layouts for all screen sizes</li>
+<li><strong>Theme Support</strong>: Light/dark/system themes with smooth transitions</li>
+</ul>
+
+<h3>Backend Integration</h3>
+<ul>
+<li><strong>9 Production Endpoints</strong>: Complete API coverage for market data and analytics</li>
+<li><strong>Live Deployment</strong>: Hosted on Render with auto-deploy from GitHub</li>
+<li><strong>Snowflake Integration</strong>: Direct queries to production data warehouse</li>
+<li><strong>Interactive Documentation</strong>: Swagger UI and ReDoc for API exploration</li>
+<li><strong>Error Handling</strong>: Comprehensive status codes with structured JSON responses</li>
+</ul>
+
+<h3>Full-Stack Features</h3>
+<ul>
+<li><strong>End-to-End Type Safety</strong>: TypeScript frontend + Pydantic backend validation</li>
+<li><strong>Real-Time Data</strong>: Live market data from Snowflake via FastAPI</li>
+<li><strong>Interactive Visualizations</strong>: Recharts integration for price trend analysis</li>
+<li><strong>State Management</strong>: Zustand with localStorage persistence for user preferences</li>
+<li><strong>Caching Strategy</strong>: Smart caching at both frontend and API levels</li>
+</ul>
+
+<h3>User Experience</h3>
+<ul>
+<li><strong>Market Discovery</strong>: Browse all markets with sorting and filtering</li>
+<li><strong>Price Trend Analysis</strong>: Interactive charts showing 30/90-day rent trends</li>
+<li><strong>Price Drop Detection</strong>: Automatic alerts for markets with rent decreases</li>
+<li><strong>Watchlist Feature</strong>: Save and track favorite markets with localStorage</li>
+<li><strong>Market Analytics</strong>: YoY/MoM growth rates, market temperature, quality scores</li>
+</ul>
+
+<h3>Technical Excellence</h3>
+<ul>
+<li><strong>Modern Stack</strong>: Next.js 14 + TypeScript + FastAPI + Snowflake</li>
+<li><strong>Design System</strong>: Custom tokens with Tailwind CSS and Radix UI</li>
+<li><strong>Performance</strong>: Smart caching, lazy loading, optimized bundle size</li>
+<li><strong>Accessibility</strong>: WCAG AA with keyboard navigation and semantic HTML</li>
+<li><strong>Developer Experience</strong>: TypeScript strict mode, ESLint, hot reload</li>
 </ul>
     `,
     published: true

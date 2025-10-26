@@ -21,11 +21,11 @@ metrics:
     value: '15 Assets'
     description: 'Dagster software-defined assets'
   - label: 'Data Quality'
-    value: '100%'
-    description: 'Great Expectations test coverage'
-  - label: 'Historical Tracking'
-    value: 'SCD Type 2'
-    description: 'Snowflake star schema with snapshots'
+    value: '100+ Rules'
+    description: 'Great Expectations validations'
+  - label: 'Asset Checks'
+    value: '12 Checks'
+    description: 'Comprehensive validation pipeline'
   - label: 'API Endpoints'
     value: '9 Endpoints'
     description: 'FastAPI production deployment'
@@ -108,11 +108,12 @@ AWS S3 (Raw CSV) → Snowflake Bronze → dbt Silver (Star Schema) → dbt Gold 
 
 **Great Expectations - Data Quality**
 
-- 100+ validation rules across Bronze, Silver, and Gold layers
+- **100+ Validation Rules**: Comprehensive business rule validation across all pipeline layers
 - Layer-specific quality gates with automated checkpoints
 - Statistical validation for outlier detection and range checking
 - Operational monitoring for data freshness and pipeline health
-- Complete audit trail with data profiling
+- Complete audit trail with automated data profiling
+- Failure alerting with configurable notifications
 
 **Snowflake - Cloud Data Warehouse**
 
@@ -257,3 +258,4 @@ AWS S3 (Raw CSV) → Snowflake Bronze → dbt Silver (Star Schema) → dbt Gold 
 - Container orchestration with Kubernetes
 - Auto-scaling infrastructure for API
 - Multi-region deployment for high availability
+

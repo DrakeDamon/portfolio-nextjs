@@ -71,6 +71,16 @@ export default function ResumePage() {
             <h3 className="text-2xl font-semibold mb-4 text-emerald-400">Selected Projects</h3>
             <div className="space-y-6">
               <div>
+                <h4 className="text-lg font-semibold text-emerald-400 mb-2">LeaseRadar - Full-Stack Rental Market Platform — <span className="text-neutral-400 font-normal">Next.js 14 + TypeScript + FastAPI + Snowflake (Production Ready)</span></h4>
+                <ul className="text-neutral-300 space-y-1 text-sm">
+                  <li>• Built end-to-end full-stack application with <strong>15+ React components</strong>, responsive design, and <strong>WCAG AA accessibility</strong> compliance</li>
+                  <li>• Integrated <strong>Next.js 14 frontend</strong> with <strong>FastAPI backend</strong> and Snowflake data warehouse; <strong>9 RESTful endpoints</strong> with interactive visualizations</li>
+                  <li>• Implemented <strong>Zustand state management</strong> with localStorage persistence, <strong>5-minute cache TTL</strong>, and real-time market analytics</li>
+                  <li>• Deployed on <strong>Render with Docker</strong>; features include price trend charts, watchlist, theme system, and comprehensive design tokens</li>
+                </ul>
+              </div>
+
+              <div>
                 <h4 className="text-lg font-semibold text-emerald-400 mb-2">Tampa Rent Signals Data Pipeline — <span className="text-neutral-400 font-normal">Snowflake + dbt + Dagster + FastAPI (Production Ready)</span></h4>
                 <ul className="text-neutral-300 space-y-1 text-sm">
                   <li>• Built production data warehouse with <strong>Bronze → Silver → Gold</strong> medallion architecture processing Zillow, ApartmentList, and FRED data</li>
